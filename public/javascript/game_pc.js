@@ -101,16 +101,14 @@ var stage = new Array(10);
 stage[0] = new Stage(map0, 2, 6, 862, 320, 1);
 stage[1] = new Stage(map1, 2, 3, 50, 128, 2);
 
-
-    /* キャンバスの準備 */
-    getCanvasCtx();
-    /* 画像の準備 */
-    getImg();
-    /* インスタンス化 */
-    getInstance();
-    /* ゲームループ関数 */ 
-    gameLoop();
-
+/* キャンバスの準備 */
+getCanvasCtx();
+/* 画像の準備 */
+getImg();
+/* インスタンス化 */
+getInstance();
+/* ゲームループ関数 */ 
+gameLoop();
 
 /* ゲームループ関数 */
 function gameLoop() {
@@ -148,9 +146,6 @@ function gameLoop() {
     rAF(gameLoop);
 }
 
-function stage1() {
-}
-
 function getCanvasCtx() {
     canvas0 = $("canvas0");
     layer0 = canvas0.getContext("2d");
@@ -162,14 +157,8 @@ function getCanvasCtx() {
     layer3 = canvas3.getContext("2d");
     topCanvas = $("topCanvas");
     topLayer = topCanvas.getContext("2d");
-    // 実装版ではコメントアウトする
-    debugCanvas = $("debugCanvas");
-    debugLayer = debugCanvas.getContext("2d");
-    /* デバッグレイヤー設定 */
-    debugLayer.textAlign = "start";
-    debugLayer.textBaseline = "top";
-    // ここまで
 }
+
 function getImg() {
     backImg1 = $("backImg1");
     mouseImg = $("mouseImg");
@@ -186,6 +175,7 @@ function getImg() {
     katakanaImg = $("katakanaImg");
     timeWindowImg = $("timeWindowImg");
 }
+
 function getInstance() {
     player = new Eto(mouseImg, 6, 9, 9, 3);
     goal = new Effect(goalImg, 128, 64, 6);
@@ -217,8 +207,6 @@ function Stage(map, px, py, gx, gy, count) {
         goal.x = this.gx;
         goal.y = this.gy;
         offsetX = offsetY = 0;
-
-        //debugCanvas.addEventListener("click", start_stop_rotate, false);
     }
     this.draw = function() {
         var x = 0;
@@ -306,7 +294,6 @@ function Stage(map, px, py, gx, gy, count) {
             }
         }
     }
-
 }
 /* マップコンストラクタ */
 function Map(name) {
@@ -805,7 +792,6 @@ function drawBackground(img) {
     layer0.drawImage(img, 0, 0);
 }
 
-
 /* オープニングアニメーション */
 var chapter;
 var i = -1; // カウンター
@@ -916,7 +902,6 @@ function opAnimation() {
             }
             break;
         case 7: // タイトル画面
-            //debugCanvas.addEventListener("click", goToTutorial, false);
             drawBackground(backImg1);
             opStage.draw();
             title.draw();
@@ -924,7 +909,6 @@ function opAnimation() {
             player.update();
             break;
     }
-    timerUpdate();
 }
 function initOpAnimation() {
     clearAll();
@@ -941,7 +925,6 @@ function initOpAnimation() {
 function goToTutorial() {
     clearAll();
     op = false;
-//    i = -1;
     tutorial = true;
     frameCount = 0;
 }
@@ -1120,7 +1103,6 @@ function tutorialMovie() {//チュートリアル
     }
 }
 function initTutorial() {
-    //debugCanvas.removeEventListener("click", goToTutorial, false);
     goal.x = 862;
     goal.y = 320;
     textWindow.x = 192;
@@ -1183,7 +1165,6 @@ function rotate(degree) {
     if (canvasRotate) {
         canvasDegree += dDegree;
         player.changeStat("stop");
-        //debugCanvas.removeEventListener("click", start_stop_rotate, false);
     }
 
     layer1.translate((gameScreenX / 2) + offsetX,
@@ -1205,7 +1186,6 @@ function rotate(degree) {
     if (canvasDegree == 90 || canvasDegree == 0 || canvasDegree == -90) {
         canvasRotate = false;
         rotateOffset = 0;
-        //debugCanvas.addEventListener("click", start_stop_rotate, false);
     }
 }
 function timerUpdate() {
@@ -1246,26 +1226,18 @@ function getTime(time) {
     drawText(sec);
     restore(topLayer);
 }
-/* イベントリスナ */
-// PCローカル環境用
-function next() {
+/*function next() {
     textNumber++;
     console.log("next event listener worked.");
-}
-function start_stop_rotate() {
-    if (0 <= mouseX && mouseX < gameScreenX / 4) {
-        if (canvasDegree != -90) {
-            canvasRotate = true;
-            dDegree = -3;
-        }
-    } else if (gameScreenX / 4 <= mouseX &&
-            mouseX <= gameScreenX * 3 / 4) {
-        start_stop();
-    } else if (gameScreenX * 3 / 4 < mouseX && mouseX < gameScreenX) {
-        if (canvasDegree != 90) {
-            canvasRotate = true;
-            dDegree = 3;
-        }
+}*/
+function rotateD() {
+    if (canvasDegree != -90) {
+        canvasRotate = true;
+        dDegree = -3;
+    }
+    if (canvasDegree != 90) {
+        canvasRotate = true;
+        dDegree = 3;
     }
 }
 function start_stop() {
@@ -1276,6 +1248,44 @@ function start_stop() {
     }
     console.log("start_stop event listener worked.");
 }
+// iPhoneのイベント
+//接続が切れたときのダイアログ表示  
+socket.on('emit_disconnect', function() {
+    sound('dialog_sound');
+    
+    $('#error_connecting').dialog({
+        autoOpen: false,
+        buttons:{
+            "OK" : function(){
+            $(this).dialog('close');
+            location.reload();
+            }
+        },
+        title: "接続に関するエラー",
+        modal: true
+    });
+    $('#error_connecting').dialog('open');
+});
+
+socket.on('up_vol_return', function() {
+    up_volume();
+});
+
+socket.on('down_vol_return', function() {
+    down_volume();
+});
+
+socket.on('iphone_direction_return', function(data) {
+    alert(data);
+});
+
+socket.on('touch_return', function() {
+    start_stop();
+});
+
+socket.on('chara_change_return', function(data) {
+    alert(data);
+});
 
 function drawText(text) {
     var x = 215;
@@ -2203,41 +2213,4 @@ function drawText(text) {
 music_1.pause();
 music_2.play();
 
-//接続が切れたときのダイアログ表示  
-socket.on('emit_disconnect',function(){
-        sound('dialog_sound');
-    
-        $('#error_connecting').dialog({
-            autoOpen: false,
-            buttons:{
-                "OK" : function(){
-                    $(this).dialog('close');
-                    location.reload();
-                }
-            },
-            title: "接続に関するエラー",
-            modal: true
-        });
-        $('#error_connecting').dialog('open');
-    });
 
-socket.on('up_vol_return',function(){
-        up_volume();
-    });
-
-socket.on('down_vol_return',function(){
-        down_volume();
-    });
-
-socket.on('iphone_direction_return',function(data){
-    alert(data);
-});
-
-socket.on('touch_return',function(){
-    //alert("touch");
-    start_stop();
-});
-
-socket.on('chara_change_return',function(data){
-    alert(data);
-});

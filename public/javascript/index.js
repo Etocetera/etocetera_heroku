@@ -1,83 +1,81 @@
-
-    function cText(obj){
-                if(obj.value==obj.defaultValue){
-                    obj.value="";
-                    obj.style.color="#000";
-                }
-     }
-
-    function sText(obj){
-        if(obj.value==""){
-            obj.value=obj.defaultValue;
-            obj.style.color="#999";
-        }
+function cText(obj) {
+    if (obj.value == obj.defaultValue) {
+        obj.value = "";
+        obj.style.color = "#000";
     }
+}
 
-    var userAgent = window.navigator.userAgent.toLowerCase();
-    var ua = navigator.userAgent.toUpperCase();
-    if (userAgent.indexOf('safari') != -1&&ua.indexOf('IPHONE') != -1) {
-        load_File("#index","index_iphone.html");
-    }else{
-        load_File("#index","index_pc.html");
+function sText(obj) {
+    if (obj.value == "") {
+        obj.value = obj.defaultValue;
+        obj.style.color = "#999";
     }
-  
-var socket = io.connect('http://immense-caverns-2229.herokuapp.com/')||io.connect('192.168.1.21:9000');
-var iphone_count=0;
-var client_count=0; 
+}
+
+var userAgent = window.navigator.userAgent.toLowerCase();
+var ua = navigator.userAgent.toUpperCase();
+
+if (userAgent.indexOf('safari') != -1&&ua.indexOf('IPHONE') != -1) {
+    load_File("#index", "index_iphone.html");
+} else {
+    load_File("#index", "index_pc.html");
+}
+
+var socket = io.connect('http://immense-caverns-2229.herokuapp.com/') ||
+             io.connect('192.168.1.21:9000');
+var iphone_count = 0;
+var client_count = 0; 
 var room_name;
 
 //そのルームに接続された数とその中のiphoneの数を確認し、ルームに入る
-socket.on('confirm_return',function(data){
-    iphone_count=data.iphone;
-    client_count=data.client;
+socket.on('confirm_return', function(data) {
+    iphone_count = data.iphone;
+    client_count = data.client;
     roomPut();
 });
 
-
-
-socket.on('roomList',function(data){ 
-  $("#room").append("<p id='maked_room'>"+data+"</p>");
+socket.on('roomList', function(data) { 
+    $("#room").append("<p id='maked_room'>" + data + "</p>");
 });
 
 
-function roomPut_confirm(){
+function roomPut_confirm() {
     room_name = $("#enter").val();
-    socket.emit('roomPut_confirm',room_name);
+    socket.emit('roomPut_confirm', room_name);
 }
 
-function roomDel(){
-    var room_button_img=document.getElementById('room_button_img');
-    var wait=document.getElementById('wait');
+function roomDel() {
+    var room_button_img = document.getElementById('room_button_img');
+    var wait = document.getElementById('wait');
     var room;
-    wait.style.display="none";
-    room_button_img.style.display="inline";
-    
-    socket.emit("roomDel",room_name);
+    wait.style.display = "none";
+    room_button_img.style.display = "inline";
+
+    socket.emit("roomDel", room_name);
     $("#maked_room").remove();
     sound('roomDel_sound');
 }   
 
-function load_File(id,file){
+function load_File(id, file) {
     $.ajax({
-        success : function(data){
+        success : function(data) {
             $(id).load(file);
         },
-        error : function(){
+        error : function() {
             if (userAgent.indexOf('safari') != -1&&ua.indexOf('IPHONE') != -1) {
                 alert('読み込めませんでした');
-            }else{
-                use_dialog('#error_read','接続に関するエラー');
-             }
-            
+            } else {
+                use_dialog('#error_read', '接続に関するエラー');
+            }
         }
     });
 }
 
-function use_dialog(id,title_msg){
+function use_dialog(id, title_msg) {
     $(id).dialog({
         autoOpen: false,
         buttons:{
-            "OK" : function(){
+            "OK" : function() {
                 $(this).dialog('close');
             }
         },

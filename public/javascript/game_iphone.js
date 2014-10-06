@@ -9,14 +9,14 @@ socket.on('disconnect', function() {
 });
 
 var toucharea = $_id("toucharea");
-var flag=2;
+var flag = 2;
  /* タッチしたときのイベント */
 toucharea.addEventListener("touchend", touchHandler, false);
 function touchHandler(event) {
-    if(flag>=2){
-        socket.emit('touch',room_name);  
-    }else{
-        flag+=1;
+    if (flag >= 2) {
+        socket.emit('touch', room_name);  
+    } else {
+        flag += 1;
     }
 }   
 
@@ -24,7 +24,7 @@ function touchHandler(event) {
 toucharea.addEventListener("gesturestart", gesturestartHandler, false);
 function gesturestartHandler(event) {
     $("span").toggleClass("option");
-    flag=0;
+    flag = 0;
 }
 
 //ゲーム機能
@@ -32,7 +32,7 @@ function gesturestartHandler(event) {
 var up_volume = document.getElementById('up_volume');
 var down_volume = document.getElementById('down_volume');
 up_volume.addEventListener('touchend', function() {
-    socket.emit("up_vol_emit",room_name);
+    socket.emit("up_vol_emit", room_name);
 }, false);
 down_volume.addEventListener('touchend', function() {
     socket.emit("down_vol_emit", room_name);
@@ -52,10 +52,9 @@ function $_id(id) {
     return document.getElementById(id);
 }
 
-
 //キャラのアニメーション
-var img_width=64;
-var img_height=64;
+var img_width = 64;
+var img_height = 64;
 var canvas, ctx;
 var canvasSizeX, canvasSizeY;
 var mouseImg, rabbitImg;
@@ -67,16 +66,18 @@ canvasSizeY = canvas_animation.height;
 mouseImg = $_id("mouseImg");
 rabbitImg = $_id("rabbitImg")
 mouseImg.onload = function() {
-    ctx.drawImage(mouseImg, 0, img_height*2,img_width,img_height,0,0,canvasSizeX,canvasSizeY);
+    ctx.drawImage(mouseImg, 0, img_height*2, img_width, img_height,
+                    0, 0, canvasSizeX, canvasSizeY);
 }
 
 //キャラの変更
-function character_change(touch_image_id,change_image){
-    var chara_name=$_id(touch_image_id);
-    chara_name.addEventListener('touchend',function() {
-        ctx.clearRect(0,0,canvasSizeX,canvasSizeY);
-        ctx.drawImage(change_image, 0, img_height*2,img_width,img_height,0,0,canvasSizeX,canvasSizeY);
-        socket.json.emit('chara_change',{
+function character_change(touch_image_id, change_image) {
+    var chara_name = $_id(touch_image_id);
+    chara_name.addEventListener('touchend', function() {
+        ctx.clearRect(0, 0, canvasSizeX, canvasSizeY);
+        ctx.drawImage(change_image, 0, img_height*2, img_width,
+                        img_height, 0, 0, canvasSizeX, canvasSizeY);
+        socket.json.emit('chara_change', {
             room:room_name,
             name:touch_image_id
         });
@@ -84,7 +85,7 @@ function character_change(touch_image_id,change_image){
 }
 
 //ねずみ
-character_change("mouse",mouseImg);
+character_change("mouse", mouseImg);
 
 //うさぎ
-character_change("rabbit",rabbitImg);
+character_change("rabbit", rabbitImg);
