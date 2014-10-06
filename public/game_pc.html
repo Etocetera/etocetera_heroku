@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>ゲームデモ</title>
+<link rel="stylesheet" href="style/style_game_pc.css">
+ <link rel="icon" type="image/png" href="images/characters/mouse/mouse00.png">
+   <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+   <script type="text/javascript"
+  src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js">
+  </script>
+<script src="javascript/game_pc.js"></script>
+</head>
+<body>
+    <header></header>
+    <div id="gameScreen">
+        <img id="gameFrame" src="images/system/game_frame.png">
+        <!-- 背景用のcanvas -->
+        <canvas id="canvas0" width="1024" height="512"></canvas>
+        <!-- キャラ描画用のcanvas -->
+        <canvas id="canvas1" width="1024" height="512"></canvas>
+        <!-- ステージ描画用のcanvas -->
+        <canvas id="canvas2" width="1024" height="512"></canvas>
+        <!-- エフェクト描画用のcanvas -->
+        <canvas id="canvas3" width="1024" height="512"></canvas>
+        <!-- 文字描画用のcanvas -->
+        <canvas id="topCanvas" width="1024" height="512"></canvas>
+        <!-- デバッグ、クリックイベント用のcanvas -->
+        <canvas id="debugCanvas" width="1024" height="512"></canvas>
+    </div>
+    <!-- ゲームで使う画像の読み込み -->
+    <!-- 背景 -->
+    <img id="backImg1" src="images/background/back1.png" class="none">
+    <!-- ステージプリミティブ -->
+    <img id="doorImg" src="images/objects/door.png" class="none">
+    <img id="blocksImg" src="images/objects/blocks.png" class="none">
+    <img id="grassFloorImg" src="images/objects/grass_floor.png" class="none">
+    <img id="cheeseImg" src="images/objects/cheese.png" class="none">
+    <img id="carrotImg" src="images/objects/carrot.png" class="none">
+    <!-- キャラクター -->
+    <img id="mouseImg" src="images/characters/mouse/mouse.png" class="none">
+    <img id="rabbitImg" src="images/characters/rabbit/rabbit.png" class="none">
+    <!-- エフェクト -->
+    <img id="goalImg" src="images/effects/goal.png" class="none">
+    <!-- システム -->
+    <img id="titleImg" src="images/system/title.png" class="none">
+    <img id="hiraganaImg" src="images/system/hiragana.png" class="none">
+    <img id="katakanaImg" src="images/system/katakana.png" class="none">
+    <img id="windowImg" src="images/system/window.png" class="none">
+    <img id="timeImg" src="images/system/time.png" class="none">
+    <!-- ここまで -->
+    <!-- ここまで -->
+    <footer></footer>
+    <!-- end of page -->
+   
+</body>
+</html>

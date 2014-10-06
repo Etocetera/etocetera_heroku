@@ -1,0 +1,40 @@
+span{
+	position:absolute;
+	left:-300px;
+	top:220px;
+	transition:2s;
+	background-color: #FA5858;
+}
+
+.option{
+	position: absolute;
+	left:0px;
+}
+
+span img{
+	width:60px;
+}
+
+#canvas_animation{
+	display:block;
+	margin:auto;
+	background-color: #fff;
+	z-index: 1;
+	position:relative;
+	top:-450px;
+}
+
+.none{
+	display: none;
+}
+
+body{
+	background-image: url("../images/objects/blocks.png");
+}
+
+#toucharea{
+	z-index: 1;
+	height:450px;
+	width:320px;
+	background-color: red;
+}
