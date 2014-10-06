@@ -19,7 +19,7 @@ var rAF = window.mozRequestAnimationFrame ||
 var gameSpeed = 1.0;
 var frameCount = 0;
 var textNumber = 0;
-var timer = 100;
+var timer = 180;
 var area = 1;
 /* キャンバスの傾き */
 var canvasDegree = 0;
@@ -97,7 +97,7 @@ map1.col[14] = [1, 0,0,0,0,7,8,8,8,8,8, 8,8,8,8,8,8,8,8,8];
 map1.col[15] = [8, 8,8,8,8,8,8,8,8,8,8, 8,8,8,8,8,8,8,8,8];
 var stage = new Array(10);
 stage[0] = new Stage(map0, 2, 6, 862, 320, 1);
-stage[1] = new Stage(map1, 2, 3, 50, 128, 2);
+stage[1] = new Stage(map1, 2, 3, 30, 128, 2);
 
 /* キャンバスの準備 */
 getCanvasCtx();
@@ -125,7 +125,6 @@ function gameLoop() {
     saveAll();
     translateOffset(map0);
     rotate();
-    timerUpdate(9999);    
     if (frameCount == 0) {
         stage[area].init();
     }
@@ -138,6 +137,9 @@ function gameLoop() {
     player.draw();
     player.update();
     restoreAll();
+    if (player.stat != "clear") {
+        timerUpdate();    
+    }
     
     frameCount++;
 
