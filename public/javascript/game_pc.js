@@ -671,6 +671,7 @@ function Eto(_image, _stopSeen, _moveSeen, _clearSeen, _overSeen) {
                     imgNumberX = 0;
                 }
             }
+            releaseTouchEvent = false;
         } else if (this.stat == "over") {
             if (frameCount % 30 == 0) {
                 imgNumberX++;
@@ -1250,7 +1251,9 @@ socket.on('down_vol_return', function() {
 });
 
 socket.on('iphone_direction_return', function(data) {
-    changeDegree(-data);
+    if (releaseTouchEvent) {
+        changeDegree(-data);
+    }
     console.log(data);
 });
 
