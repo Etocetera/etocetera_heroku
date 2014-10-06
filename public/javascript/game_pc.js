@@ -32,6 +32,7 @@ var textFlag = true; // テキスト表示フラグ
 var op = true; // オープニングムービーフラグ
 var tutorial = false; // チュートリアルフラグ
 var gameStart = false; // ゲームスタートフラグ
+var releaseTouchEvent = false; // タッチイベント解除フラグ
 var autoMove = true; // 地面に着地したときに自動的に動く
 /* キャラクターのサイズ */
 var charaSizeX = 64;
@@ -1271,12 +1272,18 @@ socket.on('iphone_direction_return', function(data) {
 });
 
 socket.on('touch_return', function() {
-    start_stop();
+    if (releaseTouchEvent) {
+        start_stop();
+    }
 });
 
 socket.on('chara_change_return', function(data) {
     alert(data);
 });
+
+//音の切り替え
+music_1.pause();
+music_2.play();
 
 function drawText(text) {
     var x = 215;
@@ -2198,10 +2205,3 @@ function drawText(text) {
         }
     }
 }
-
-
-//音の切り替え
-music_1.pause();
-music_2.play();
-
-
