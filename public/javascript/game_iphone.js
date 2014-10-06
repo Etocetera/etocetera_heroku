@@ -11,7 +11,7 @@ socket.on('disconnect', function() {
 var toucharea = $_id("toucharea");
 var flag = 2;
  /* タッチしたときのイベント */
-toucharea.addEventListener("touchend", touchHandler, false);
+toucharea.addEventListener("touchstart", touchHandler, false);
 function touchHandler(event) {
     if (flag >= 2) {
         socket.emit('touch', room_name);  
@@ -31,10 +31,10 @@ function gesturestartHandler(event) {
 //音量の変化
 var up_volume = document.getElementById('up_volume');
 var down_volume = document.getElementById('down_volume');
-up_volume.addEventListener('touchend', function() {
+up_volume.addEventListener('touchstart', function() {
     socket.emit("up_vol_emit", room_name);
 }, false);
-down_volume.addEventListener('touchend', function() {
+down_volume.addEventListener('touchstart', function() {
     socket.emit("down_vol_emit", room_name);
 }, false);
 
@@ -73,7 +73,7 @@ mouseImg.onload = function() {
 //キャラの変更
 function character_change(touch_image_id, change_image) {
     var chara_name = $_id(touch_image_id);
-    chara_name.addEventListener('touchend', function() {
+    chara_name.addEventListener('touchstart', function() {
         ctx.clearRect(0, 0, canvasSizeX, canvasSizeY);
         ctx.drawImage(change_image, 0, img_height*2, img_width,
                         img_height, 0, 0, canvasSizeX, canvasSizeY);
