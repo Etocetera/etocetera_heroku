@@ -24,7 +24,6 @@ var area = 1;
 /* キャンバスの傾き */
 var canvasDegree = 0;
 var dDegree = 0;
-var canvasRotate = false;
 /* 重力 */
 var g = 12;
 /* フラグ */
@@ -32,7 +31,7 @@ var textFlag = true; // テキスト表示フラグ
 var op = true; // オープニングムービーフラグ
 var tutorial = false; // チュートリアルフラグ
 var gameStart = false; // ゲームスタートフラグ
-var releaseTouchEvent = false; // タッチイベント解除フラグ
+var releaseTouchEvent = true; // タッチイベント解除フラグ
 var autoMove = true; // 地面に着地したときに自動的に動く
 /* キャラクターのサイズ */
 var charaSizeX = 64;
@@ -125,7 +124,7 @@ function gameLoop() {
     drawBackground(backImg1);
     saveAll();
     translateOffset(map0);
-    rotate(canvasDegree);
+    rotate();
     timerUpdate(9999);    
     if (frameCount == 0) {
         stage[area].init();
@@ -1013,8 +1012,7 @@ function tutorialMovie() {//チュートリアル
             if (frameCount > 100) {
                 frameCount = 0;
                 textNumber++;
-                canvasRotate = true;
-                dDegree = -3;
+                dDegree = -90;
             }
             break;
         case 8:
@@ -1022,25 +1020,22 @@ function tutorialMovie() {//チュートリアル
             drawText("なんとステージがかいてんするんだ！8");
             saveAll();
             translateOffset(map0);
-            rotate(dDegree);
+            rotate();
             stage[0].draw();
             drawPlayer();
-            rotate(canvasDegree);
             restoreAll();
             if (frameCount > 100) {
                 frameCount = 0;
                 textNumber++;
-                canvasRotate = true;
-                dDegree = 3;
+                dDegree = 0;
             }
             break;
         case 9:
             saveAll();
             translateOffset(map0);
-            rotate(dDegree);
+            rotate();
             stage[0].draw();
             drawPlayer();
-            rotate(canvasDegree);
             restoreAll();
             textWindow.draw();
             drawText("いけそうにないゴールがあっても9");
@@ -1054,14 +1049,13 @@ function tutorialMovie() {//チュートリアル
         case 10:
             saveAll();
             translateOffset(map0);
-            rotate(dDegree);
+            rotate();
             stage[0].draw();
             drawPlayer();
             if (player.count == 0) {
                 goal.draw();
                 goal.update();
             }
-            rotate(canvasDegree);
             restoreAll();
             textWindow.draw();
             drawText("かいてんしたらいけるようになるかも！10");
@@ -1073,14 +1067,13 @@ function tutorialMovie() {//チュートリアル
         case 11:
             saveAll();
             translateOffset(map0);
-            rotate(dDegree);
+            rotate();
             stage[0].draw();
             drawPlayer();
             if (player.count == 0) {
                 goal.draw();
                 goal.update();
             }
-            rotate(canvasDegree);
             restoreAll();
             textWindow.draw();
             drawText("それじゃあがんばってゴールをめざしてね！11");
@@ -1153,9 +1146,17 @@ function translateOffset(map) {
     layer2.translate(-offsetX, -offsetY);
     layer3.translate(-offsetX, -offsetY);
 }
-function rotate(degree) {
-    if (canvasRotate) {
-        canvasDegree += dDegree;
+function changeDegree(degree) {
+    if (canvasDegree != degree) {
+        dDegree = degree;
+    }
+}
+function rotate() {
+    if (canvasDegree < dDegree) {
+        canvasDegree += 3;
+        player.changeStat("stop");
+    } else if (canvasDegree > dDegree) {
+        canvasDegree -= 3;
         player.changeStat("stop");
     }
 
@@ -1174,11 +1175,6 @@ function rotate(degree) {
             -((gameScreenY / 2) + offsetY));
     layer1.translate(-((gameScreenX / 2) + offsetX),
             -((gameScreenY / 2) + offsetY));
-
-    if (canvasDegree == 90 || canvasDegree == 0 || canvasDegree == -90) {
-        canvasRotate = false;
-        rotateOffset = 0;
-    }
 }
 function timerUpdate() {
     if (frameCount % 30 == 0 && timer > 0) {
@@ -1218,16 +1214,6 @@ function getTime(time) {
     drawText(sec);
     restore(topLayer);
 }
-function rotateD() {
-    if (canvasDegree != -90) {
-        canvasRotate = true;
-        dDegree = -3;
-    }
-    if (canvasDegree != 90) {
-        canvasRotate = true;
-        dDegree = 3;
-    }
-}
 function start_stop() {
     if (player.stat == "stop") {
         player.changeStat("move");
@@ -1264,8 +1250,8 @@ socket.on('down_vol_return', function() {
 });
 
 socket.on('iphone_direction_return', function(data) {
+    changeDegree(data);
     console.log(data);
-    console.dir(data);
 });
 
 socket.on('touch_return', function() {
