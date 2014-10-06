@@ -8,8 +8,6 @@ var canvas2, layer2;
 var canvas3, layer3;
 /* 文字レイヤー */
 var topCanvas, topLayer;
-/* デバッグレイヤー */
-var debugCanvas, debugLayer;
 /* ゲーム画面の幅と高さ */
 var gameScreenX = 1024;
 var gameScreenY = 512;
@@ -762,7 +760,6 @@ function clearAll() {
     layer2.clearRect(0, 0, gameScreenX, gameScreenY);
     layer3.clearRect(0, 0, gameScreenX, gameScreenY);
     topLayer.clearRect(0, 0, gameScreenX, gameScreenY);
-    debugLayer.clearRect(0, 0, gameScreenX, gameScreenY);
 }
 /* レイヤーのセーブ(レイヤー指定) */
 function save(layer) {
@@ -796,12 +793,6 @@ function drawBackground(img) {
 var chapter;
 var i = -1; // カウンター
 function opAnimation() {
-    // デバッグ用
-    debugLayer.save();
-    debugLayer.font = "20px 'Times New Roman'";
-    debugLayer.fillText("frameCount: " + frameCount + " frame(s).", 0, 0);
-    debugLayer.restore();
-    // ここまで
     if (i < 0) {
         initOpAnimation();
     }
