@@ -21,8 +21,9 @@ if (userAgent.indexOf('safari') != -1&&ua.indexOf('IPHONE') != -1) {
     load_File("#index", "index_pc.html");
 }
 
-var socket = io.connect('http://immense-caverns-2229.herokuapp.com/') ||
-             io.connect('192.168.1.21:9000');
+/*var socket = io.connect('http://immense-caverns-2229.herokuapp.com/') ||
+             io.connect('192.168.1.21:9000');*/
+var socket = io.connect('http://etocetera.herokuapp.com/')
 var iphone_count = 0;
 var client_count = 0; 
 var room_name;
