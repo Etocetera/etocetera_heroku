@@ -1218,10 +1218,6 @@ function getTime(time) {
     drawText(sec);
     restore(topLayer);
 }
-/*function next() {
-    textNumber++;
-    console.log("next event listener worked.");
-}*/
 function rotateD() {
     if (canvasDegree != -90) {
         canvasRotate = true;
@@ -1268,12 +1264,14 @@ socket.on('down_vol_return', function() {
 });
 
 socket.on('iphone_direction_return', function(data) {
-    alert(data);
+    console.log(data);
+    console.dir(data);
 });
 
 socket.on('touch_return', function() {
     if (releaseTouchEvent) {
         start_stop();
+    } else {
     }
 });
 
