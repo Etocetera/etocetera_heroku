@@ -1250,7 +1250,7 @@ socket.on('down_vol_return', function() {
 });
 
 socket.on('iphone_direction_return', function(data) {
-    changeDegree(data);
+    changeDegree(-data);
     console.log(data);
 });
 
