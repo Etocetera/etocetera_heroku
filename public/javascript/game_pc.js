@@ -43,7 +43,7 @@ var doorImg, blocksImg, grassFloorImg, cheeseImg, carrotImg;
 var goalImg;
 var titleImg, hiraganaImg, katakanaImg, textWindowImg, timeWindowImg;
 /* インスタンス */
-var player, mouse;
+var player, mouse, rabbit;
 var door;
 var blocks;
 var grassFloor;
@@ -177,8 +177,9 @@ function getImg() {
 }
 
 function getInstance() {
-    mouse = new Eto(mouseImg, 6, 9, 9, 3);
-    player = mouse;
+    mouse = new Eto(mouseImg);
+    rabbit = new Eto(rabbitImg);
+    player = rabbit;
     goal = new Effect(goalImg, 128, 64, 6);
     title = new System(titleImg);
     textWindow = new System(textWindowImg);
@@ -320,7 +321,7 @@ function Map(name) {
 }
 
 /* 干支コンストラクタ */
-function Eto(_image, _stopSeen, _moveSeen, _clearSeen, _overSeen) {
+function Eto(image) {
     // 座標系
     this.x;
     this.y;
@@ -336,7 +337,7 @@ function Eto(_image, _stopSeen, _moveSeen, _clearSeen, _overSeen) {
     // クリア条件
     this.count;
     
-    var image = _image;
+    var image = image;
     /* アニメーションに用いる画像番号 */
     var imgNumberX = 0;
     var imgNumberY = 0;
@@ -344,10 +345,10 @@ function Eto(_image, _stopSeen, _moveSeen, _clearSeen, _overSeen) {
     var imgX = 0;
     var imgY = 0;
     /* 各アニメーションのシーン数 */
-    var stopSeen = _stopSeen - 1;
-    var moveSeen = _moveSeen - 1;
-    var clearSeen = _clearSeen - 1;
-    var overSeen = _overSeen - 1;
+    var stopSeen = 8;
+    var moveSeen = 8;
+    var clearSeen = 8;
+    var overSeen = 8;
 
     this.judge = function(map) {
         var right, rx, ry;
