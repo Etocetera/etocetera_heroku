@@ -1210,7 +1210,7 @@ function getTime(time) {
         sec = String(sec);
     }
 
-    topLayer.drawImage(timeImg, 10, 10);
+    topLayer.drawImage(timeWindowImg, 10, 10);
     save(topLayer);
     topLayer.translate(-150, 0);
     drawText(min);
