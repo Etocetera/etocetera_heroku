@@ -631,7 +631,7 @@ function Eto(image) {
     this.update = function() {
         // アニメーションと座標(stop, move時のみ)の更新
         if (this.stat == "stop") {
-            if (frameCount % 6 == 0) {
+            if (frameCount % 10 == 0) {
                 imgNumberX++;
                 if (imgNumberX > stopSeen) {
                     imgNumberX = 0;
@@ -650,7 +650,7 @@ function Eto(image) {
                     break;
             }
         } else if (this.stat == "move") {
-            if (frameCount % 3 == 0) {
+            if (frameCount % 6 == 0) {
                 imgNumberX++;
                 if (imgNumberX > moveSeen) {
                     imgNumberX = 0;
@@ -669,7 +669,7 @@ function Eto(image) {
                     break;
             }
         } else if (this.stat == "clear") {
-            if (frameCount % 4 == 0) {
+            if (frameCount % 10 == 0) {
                 imgNumberX++;
                 if (imgNumberX > clearSeen) {
                     imgNumberX = 0;
@@ -680,7 +680,7 @@ function Eto(image) {
             if (frameCount % 30 == 0) {
                 imgNumberX++;
                 if (imgNumberX > overSeen) {
-                    imgNumberX = 1;
+                    imgNumberX = 0;
                 }
             }
         } else {
