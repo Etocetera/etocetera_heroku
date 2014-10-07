@@ -170,7 +170,7 @@ function getImg() {
     carrotImg = $("carrotImg");
     goalImg = $("goalImg");
     titleImg = $("titleImg");
-    textWindowImg = $("windowImg");
+    textWindowImg = $("textWindowImg");
     hiraganaImg = $("hiraganaImg");
     katakanaImg = $("katakanaImg");
     timeWindowImg = $("timeWindowImg");
