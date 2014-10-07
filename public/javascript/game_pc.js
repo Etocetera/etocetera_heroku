@@ -43,7 +43,7 @@ var doorImg, blocksImg, grassFloorImg, cheeseImg, carrotImg;
 var goalImg;
 var titleImg, hiraganaImg, katakanaImg, textWindowImg, timeWindowImg;
 /* インスタンス */
-var player;
+var player, mouse;
 var door;
 var blocks;
 var grassFloor;
@@ -177,7 +177,8 @@ function getImg() {
 }
 
 function getInstance() {
-    player = new Eto(mouseImg, 6, 9, 9, 3);
+    mouse = new Eto(mouseImg, 6, 9, 9, 3);
+    player = mouse;
     goal = new Effect(goalImg, 128, 64, 6);
     title = new System(titleImg);
     textWindow = new System(textWindowImg);
@@ -1263,6 +1264,7 @@ socket.on('touch_return', function() {
     if (releaseTouchEvent) {
         start_stop();
     } else {
+        //next();
     }
 });
 
