@@ -197,7 +197,7 @@ function getInstance() {
     //monkey = new Eto(monkeyImg);
     player = new Eto(mouseImg);
     //rabbit = new Eto(rabbitImg);
-    img["rabbit"] = birdImg;
+    img["bird"] = birdImg;
     //img[1] = {name: "cow", image: cowImg};
     //img[2] = {name: "dog", image: dogImg};
     //img[3] = {name: "dragon", image: dragonImg};
@@ -209,7 +209,6 @@ function getInstance() {
     //img[8] = {name: "snake", image: snakeImg};
     img["tiger"] = tigerImg;
     //img[11] = {name: "wildBoar", image: wildBoarImg};
-    player = rabbit;
     goal = new Effect(goalImg, 128, 64, 6);
     title = new System(titleImg);
     textWindow = new System(textWindowImg);
