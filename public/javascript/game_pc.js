@@ -19,7 +19,7 @@ var rAF = window.mozRequestAnimationFrame ||
 var gameSpeed = 1.0;
 var frameCount = 0;
 var textNumber = 0;
-var timer = 180;
+var timer = 1800;
 var area = 1;
 /* キャンバスの傾き */
 var canvasDegree = 0;
@@ -189,14 +189,7 @@ function getImg() {
 }
 
 function getInstance() {
-    //bird = new Eto(birdImg);
-    //cow = new Eto(cowImg);
-    //dog = new Eto(dogImg);
-    //dragon = new Eto(dragonImg);
-    //horse = new Eto(horseImg);
-    //monkey = new Eto(monkeyImg);
-    player = new Eto(mouseImg);
-    //rabbit = new Eto(rabbitImg);
+    // 画像連想配列用意
     img["bird"] = birdImg;
     //img[1] = {name: "cow", image: cowImg};
     //img[2] = {name: "dog", image: dogImg};
@@ -209,6 +202,7 @@ function getInstance() {
     //img[8] = {name: "snake", image: snakeImg};
     img["tiger"] = tigerImg;
     //img[11] = {name: "wildBoar", image: wildBoarImg};
+    player = new Eto(mouseImg);
     goal = new Effect(goalImg, 128, 64, 6);
     title = new System(titleImg);
     textWindow = new System(textWindowImg);
@@ -1301,6 +1295,7 @@ socket.on('touch_return', function() {
 
 socket.on('chara_change_return', function(data) {
     player.image = img[data];
+    player.changeStat("stop");
 
     console.log(data);
 });
