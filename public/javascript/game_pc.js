@@ -38,12 +38,14 @@ var charaSizeX = 64;
 var charaSizeY = 64;
 /* 画像 */
 var backImg1;
-var mouseImg, rabbitImg;
+var birdImg, cowImg, dogImg, dragonImg, horseImg, monkeyImg, mouseImg,
+    rabbitImg, sheepImg, snakeImg, tigerImg, wildBoarImg;
 var doorImg, blocksImg, grassFloorImg, cheeseImg, carrotImg;
 var goalImg;
 var titleImg, hiraganaImg, katakanaImg, textWindowImg, timeWindowImg;
 /* インスタンス */
-var player, mouse, rabbit;
+var player, bird, cow, dog, dragon, horse, monkey, mouse, rabbit, sheep,
+    snake, tiger, wildBoar;
 var door;
 var blocks;
 var grassFloor;
@@ -161,8 +163,18 @@ function getCanvasCtx() {
 
 function getImg() {
     backImg1 = $("backImg1");
+    birdImg = $("birdImg");
+    //cowImg = $("cowImg");
+    //dogImg = $("dogImg");
+    //dragonImg = $("dragonImg");
+    //horseImg = $("horseImg");
+    monkeyImg = $("monkeyImg");
     mouseImg = $("mouseImg");
     rabbitImg = $("rabbitImg");
+    sheepImg = $("sheepImg");
+    //snakeImg = $("snakeImg");
+    tigerImg = $("tigerImg");
+    //wildBoarImg = $("wildBoarImg");
     doorImg = $("doorImg");
     blocksImg = $("blocksImg");
     grassFloorImg = $("grassFloorImg");
@@ -177,9 +189,17 @@ function getImg() {
 }
 
 function getInstance() {
+    //bird = new Eto(birdImg);
+    //cow = new Eto(cowImg);
+    //dog = new Eto(dogImg);
+    //dragon = new Eto(dragonImg);
+    //horse = new Eto(horseImg);
+    //monkey = new Eto(monkeyImg);
     mouse = new Eto(mouseImg);
     rabbit = new Eto(rabbitImg);
+    
     player = rabbit;
+    player.image = mouseImg;
     goal = new Effect(goalImg, 128, 64, 6);
     title = new System(titleImg);
     textWindow = new System(textWindowImg);
@@ -336,8 +356,9 @@ function Eto(image) {
     this.fall = false;
     // クリア条件
     this.count;
-    
-    var image = image;
+    // 画像
+    this.image = image;
+
     /* アニメーションに用いる画像番号 */
     var imgNumberX = 0;
     var imgNumberY = 0;
@@ -611,7 +632,7 @@ function Eto(image) {
         layer2.translate(-player.x - charaSizeX / 2,
                 -player.y - charaSizeY / 2);
         if (!this.rev) {
-            layer2.drawImage(image, imgX, imgY, 
+            layer2.drawImage(this.image, imgX, imgY, 
                     charaSizeX, charaSizeY, this.x, this.y, 
                     charaSizeX, charaSizeY);
         } else {
@@ -621,7 +642,7 @@ function Eto(image) {
             y = this.y;
             save(layer2);
             layer2.scale(-1, 1);
-            layer2.drawImage(image, imgX, imgY, 
+            layer2.drawImage(this.image, imgX, imgY, 
                     charaSizeX, charaSizeY, x, y, 
                     charaSizeX, charaSizeY);
             restore(layer2);
