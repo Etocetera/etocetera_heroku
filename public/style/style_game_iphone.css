@@ -28,6 +28,8 @@ span img{
 }
 
 body{
+    width: 100%;
+    height: 100%;
 	background-image: url("../images/objects/blocks.png");
 }
 
