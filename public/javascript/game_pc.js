@@ -1228,7 +1228,11 @@ function getTime(time) {
     sec = time % rate;
 
     // 求めた分と秒をstringにキャスト
-    min = String(min);
+    if (min < 10) {
+        min = "0" + String(min);
+    } else {
+        min = String(min);
+    }
     if (sec < 10) {
         sec = "0" + String(sec);
     } else {
@@ -1237,7 +1241,7 @@ function getTime(time) {
 
     topLayer.drawImage(timeWindowImg, 10, 10);
     save(topLayer);
-    topLayer.translate(-150, 0);
+    topLayer.translate(-250, 0);
     drawText(min);
     topLayer.translate(100, 0);
     drawText(sec);
