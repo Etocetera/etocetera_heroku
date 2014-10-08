@@ -1291,7 +1291,13 @@ socket.on('touch_return', function() {
 });
 
 socket.on('chara_change_return', function(data) {
-    alert(data);
+    if (data == "rabbit") {
+        player.image = rabbitImg;
+    }
+    if (data == "mouse") {
+        player.image = mouseImg;
+    }
+    console.log(data);
 });
 
 //音の切り替え
