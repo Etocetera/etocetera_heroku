@@ -1241,9 +1241,9 @@ function getTime(time) {
 
     topLayer.drawImage(timeWindowImg, 10, 10);
     save(topLayer);
-    topLayer.translate(-250, 0);
+    topLayer.translate(-180, 0);
     drawText(min);
-    topLayer.translate(100, 0);
+    topLayer.translate(120, 0);
     drawText(sec);
     restore(topLayer);
 }
