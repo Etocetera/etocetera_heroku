@@ -40,12 +40,12 @@ var charaSizeY = 64;
 var backImg1;
 var birdImg, cowImg, dogImg, dragonImg, horseImg, monkeyImg, mouseImg,
     rabbitImg, sheepImg, snakeImg, tigerImg, wildBoarImg;
+var img = new Array(12);
 var doorImg, blocksImg, grassFloorImg, cheeseImg, carrotImg;
 var goalImg;
 var titleImg, hiraganaImg, katakanaImg, textWindowImg, timeWindowImg;
 /* インスタンス */
-var player, bird, cow, dog, dragon, horse, monkey, mouse, rabbit, sheep,
-    snake, tiger, wildBoar;
+var player;
 var door;
 var blocks;
 var grassFloor;
@@ -195,11 +195,21 @@ function getInstance() {
     //dragon = new Eto(dragonImg);
     //horse = new Eto(horseImg);
     //monkey = new Eto(monkeyImg);
-    mouse = new Eto(mouseImg);
-    rabbit = new Eto(rabbitImg);
-    
+    player = new Eto(mouseImg);
+    //rabbit = new Eto(rabbitImg);
+    img["rabbit"] = birdImg;
+    //img[1] = {name: "cow", image: cowImg};
+    //img[2] = {name: "dog", image: dogImg};
+    //img[3] = {name: "dragon", image: dragonImg};
+    //img[4] = {name: "horse", image: horseImg};
+    img["monkey"] = monkeyImg;
+    img["mouse"] = mouseImg;
+    img["rabbit"] = rabbitImg;
+    img["sheep"] = sheepImg;
+    //img[8] = {name: "snake", image: snakeImg};
+    img["tiger"] = tigerImg;
+    //img[11] = {name: "wildBoar", image: wildBoarImg};
     player = rabbit;
-    player.image = mouseImg;
     goal = new Effect(goalImg, 128, 64, 6);
     title = new System(titleImg);
     textWindow = new System(textWindowImg);
@@ -1291,12 +1301,8 @@ socket.on('touch_return', function() {
 });
 
 socket.on('chara_change_return', function(data) {
-    if (data == "rabbit") {
-        player.image = rabbitImg;
-    }
-    if (data == "mouse") {
-        player.image = mouseImg;
-    }
+    player.image = img[data];
+
     console.log(data);
 });
 
