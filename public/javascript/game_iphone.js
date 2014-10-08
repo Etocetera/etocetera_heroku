@@ -53,14 +53,18 @@ var img_width = 64;
 var img_height = 64;
 var canvas, ctx;
 var canvasSizeX, canvasSizeY;
-var mouseImg, rabbitImg;
+var birdImg, monkeyImg, mouseImg, rabbitImg, sheepImg,
+    tigreImg;
 
 canvas = $_id("canvas_animation");
 ctx = canvas.getContext("2d");
 canvasSizeX = canvas_animation.width;
 canvasSizeY = canvas_animation.height;
+birdImg = $_id("birdImg");
+monkeyImg = $_id("monkeyImg");
 mouseImg = $_id("mouseImg");
 rabbitImg = $_id("rabbitImg")
+sheepImg = $_id("sheepImg")
 mouseImg.onload = function() {
     ctx.drawImage(mouseImg, 0, img_height*2, img_width, img_height,
                     0, 0, canvasSizeX, canvasSizeY);
@@ -90,8 +94,15 @@ function change_style(){
     $("#canvas_animation").css("top",height/2-100);
 }
 
+//トリ
+character_change("bird", birdImg);
+//サル
+character_change("monkey", monkeyImg);
 //ねずみ
 character_change("mouse", mouseImg);
-
 //うさぎ
 character_change("rabbit", rabbitImg);
+//ヒツジ
+character_change("sheep", sheepImg);
+//トラ
+character_change("tiger", tigerImg);

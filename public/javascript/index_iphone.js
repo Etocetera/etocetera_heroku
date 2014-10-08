@@ -56,10 +56,3 @@ function roomPut() {
         $("#enter").val("");
     }
 }
-
-
-
-
-
-
-
