@@ -12,16 +12,15 @@ span{
 }
 
 span img{
-	width:60px;
+	width:70px;
 }
 
 #canvas_animation{
 	display:block;
-	margin:auto;
 	background-color: #fff;
-	z-index: 1;
-	position:relative;
-	top:-450px;
+	z-index: -10;
+	position: absolute;
+	top: 0px;
 }
 
 .none{
@@ -32,9 +31,6 @@ body{
 	background-image: url("../images/objects/blocks.png");
 }
 
-#toucharea{
-	z-index: 1;
-	height:450px;
-	width:320px;
-	background-color: red;
+.ui-overlay-a{
+	background-color: rgba(0,0,0,0);
 }

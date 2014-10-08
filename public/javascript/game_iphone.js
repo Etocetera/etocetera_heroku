@@ -9,22 +9,17 @@ socket.on('disconnect', function() {
 });
 
 var toucharea = $_id("toucharea");
-var flag = 2;
+
  /* タッチしたときのイベント */
 toucharea.addEventListener("touchstart", touchHandler, false);
 function touchHandler(event) {
-    if (flag >= 2) {
-        socket.emit('touch', room_name);  
-    } else {
-        flag += 1;
-    }
+    socket.emit('touch', room_name);  
 }   
 
 // 二本でタッチした時のイベント
 toucharea.addEventListener("gesturestart", gesturestartHandler, false);
 function gesturestartHandler(event) {
     $("span").toggleClass("option");
-    flag = 0;
 }
 
 //ゲーム機能
@@ -40,6 +35,7 @@ down_volume.addEventListener('touchstart', function() {
 
 //回転の検出
 window.onorientationchange = function() {
+    change_style();
     // 向きが変わった際に実行する処理を書く
     var direction = window.orientation;
     socket.json.emit('iphone_direction', {
@@ -82,6 +78,16 @@ function character_change(touch_image_id, change_image) {
             name:touch_image_id
         });
     },false);
+}
+
+change_style();
+function change_style(){
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    $("#toucharea").css("width",width);
+    $("#toucharea").css("height",height-20);
+    $("#canvas_animation").css("left",width/2-100);
+    $("#canvas_animation").css("top",height/2-100);
 }
 
 //ねずみ
