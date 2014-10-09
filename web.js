@@ -1,5 +1,4 @@
-
-/**
+/*
  * Node Sever Script 
  */
 
@@ -126,12 +125,6 @@ io.sockets.on("connection", function (socket) {
         io.sockets.to(data.room).emit('chara_change_return',data.name);
     });
 
+    socket.on('chara_stat',function (data){
+        io.sockets.to(data.room).emit('chara_stat_return',data.stat);
  });
-
-	
-
-
-
-
-
-

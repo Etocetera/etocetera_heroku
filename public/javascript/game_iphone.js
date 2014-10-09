@@ -9,12 +9,10 @@ socket.on('disconnect', function() {
 });
 
 var toucharea = $_id("toucharea");
-var touchCount = 0;
 // タッチしたときのイベント
 toucharea.addEventListener("touchstart", touchHandler, false);
 function touchHandler(event) {
     socket.emit('touch', room_name);
-    touchCount++;
 }   
 
 // 二本でタッチした時のイベント
@@ -87,11 +85,6 @@ var frame_count=0;
 function draw_animation() {
     animationFrame(draw_animation);
     frame_count++;
-    if (touch_count % 2 == 0) {
-        j=0;
-    } else {
-        j=1;
-    }
     if(frame_count%10==0){
         ctx.clearRect(0,0,canvasSizeX,canvasSizeY);
         ctx.drawImage(img[character], img_width*(i-1), img_height*j,img_width,img_height,0,0,canvasSizeX,canvasSizeY);
@@ -181,16 +174,16 @@ function change_style(){
     $("#canvas_animation").css("left",width/2-100);
     $("#canvas_animation").css("top",height/2-100);
 }
-/*
-//トリ
-character_change("bird", birdImg);
-//サル
-character_change("monkey", monkeyImg);
-//ねずみ
-character_change("mouse", mouseImg);
-//うさぎ
-character_change("rabbit", rabbitImg);
-//ヒツジ
-character_change("sheep", sheepImg);
-//トラ
-character_change("tiger", tigerImg);*/
+
+//キャラの状態
+socket.on('chara_stat_return', function(data) {
+    if (data == "move") {
+        j = 1;
+    } else if (data == "stop") {
+        j = 0;
+    } else if (data == "clear") {
+        j = 2;
+    } else {
+        j = 3;
+    }
+});

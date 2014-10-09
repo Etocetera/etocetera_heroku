@@ -719,6 +719,7 @@ function Eto(image) {
         this.px = Math.round(this.x / mapE);
         this.py = Math.round(this.y / mapE);
     }
+    var beforeStat = "stop";
     this.changeStat = function(stat) {
         this.stat = stat;
 
@@ -735,7 +736,14 @@ function Eto(image) {
         } else {
             console.log("ERROR: the unexpected argument of function changeStat();");
         }
-        //send_chara_stat(this.stat);
+
+        if (beforeStat != stat) {
+            socket.json.emit('chara_stat', {
+                room: room_name,
+                stat: stat
+            });
+            beforeStat = stat;
+        }
     }
 }
 /* エフェクトコンストラクタ */
