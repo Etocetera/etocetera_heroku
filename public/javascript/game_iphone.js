@@ -52,27 +52,29 @@ var img_width = 64;
 var img_height = 64;
 var canvas, ctx;
 var canvasSizeX, canvasSizeY;
-var birdImg, monkeyImg, mouseImg, rabbitImg, sheepImg,
-    tigreImg;
+var birdImg, cowImg, dogImg, monkeyImg, mouseImg, rabbitImg, sheepImg,
+    snakeImg, tigreImg;
+var img = new Array(12);
+var character = "mouse";
 
 canvas = $_id("canvas_animation");
 ctx = canvas.getContext("2d");
 canvasSizeX = canvas_animation.width;
 canvasSizeY = canvas_animation.height;
-birdImg = $_id("birdImg");
-cowImg = $_id("cowImg");
-dogImg = $_id("dogImg");
-//dragonImg = $_id("dragonImg");
-//horseImg = $_id("horseImg");
-monkeyImg = $_id("monkeyImg");
-mouseImg = $_id("mouseImg");
-rabbitImg = $_id("rabbitImg")
-sheepImg = $_id("sheepImg")
-snake = $_id("snakeImg");
-tiger = $_id("tigerImg");
+img["bird"] = $_id("birdImg");
+img["cow"] = $_id("cowImg");
+img["dog"] = $_id("dogImg");
+//img["dragon"] = $_id("dragonImg");
+//img["horse"] = $_id("horseImg");
+img["monkey"] = $_id("monkeyImg");
+img["mouse"] = $_id("mouseImg");
+img["rabbit"] = $_id("rabbitImg")
+img["sheep"] = $_id("sheepImg")
+img["snake"] = $_id("snakeImg");
+img["tiger"] = $_id("tigerImg");
 //wildBoar=$_id("wildBoarImg");
 mouseImg.onload = function() {
-    ctx.drawImage(mouseImg, 0, img_height*2, img_width, img_height,
+    ctx.drawImage(img[character], 0, img_height*2, img_width, img_height,
                     0, 0, canvasSizeX, canvasSizeY);
     draw_animation();
 }
