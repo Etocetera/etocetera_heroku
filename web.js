@@ -127,4 +127,5 @@ io.sockets.on("connection", function (socket) {
 
     socket.on('chara_stat',function (data){
         io.sockets.to(data.room).emit('chara_stat_return',data.stat);
+    });
  });
