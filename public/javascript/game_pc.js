@@ -170,8 +170,8 @@ function gameLoop() {
         if ((++eFrameCount) % 150) {
             console.log("next stage.");
             frameCount = 0;
+            area++;
         }
-        area++;
     }
     
     frameCount++;
