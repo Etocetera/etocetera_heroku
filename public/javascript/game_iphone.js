@@ -82,7 +82,7 @@ function draw_animation() {
     frame_count++;
     if (touch_count % 2 == 0) {
         j=0;
-    }else{
+    } else {
         j=1;
     }
     if(frame_count%10==0){
@@ -113,15 +113,15 @@ function character_change(touch_image_id) {
 //var rabbit=$_id("rabbit");
 //var mouse=$_id("mouse");
 //var rabbit=$_id("rabbit");
-var mouse=$_id("mouse");
-var rabbit=$_id("rabbit");
+var mouse = $_id("mouse");
+var rabbit = $_id("rabbit");
 mouse.addEventListener('touchend',function(){
-    character="mouse";
+    character = "mouse";
     character_change(character);
 },false);
 
 rabbit.addEventListener('touchend',function() {
-    character="rabbit";
+    character = "rabbit";
     character_change(character);
 },false);
 

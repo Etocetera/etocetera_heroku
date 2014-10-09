@@ -440,9 +440,10 @@ function Eto(image) {
                 var cx = this.px;
                 var cy = this.py;
                 current = map.col[cy][cx];
-                if (current == 10) {
+                if (current == 10) {// アイテム取得
                     map.col[cy][cx] = 0;
                     this.count--;
+                    sound("item_sound");
                 }
                 // クリア可能判定
                 if (current == 13 && this.count == 0) {
@@ -523,9 +524,10 @@ function Eto(image) {
                 var cx = this.px;
                 var cy = this.py;
                 current = map.col[cy][cx];
-                if (current == 10) {
+                if (current == 10) {// アイテム取得
                     map.col[cy][cx] = 0;
                     this.count--;
+                    sound("item_sound");
                 }
                 if (current == 13 && this.count == 0) {
                     if (!this.rev) {
@@ -605,9 +607,10 @@ function Eto(image) {
                 var cx = this.px;
                 var cy = this.py;
                 current = map.col[cy][cx];
-                if (current == 10) {
+                if (current == 10) {//アイテム取得
                     map.col[cy][cx] = 0;
                     this.count--;
+                    sound("item_sound");
                 }
                 if (current == 13 && this.count == 0) {
                     if (!this.rev) {
@@ -715,6 +718,8 @@ function Eto(image) {
         // プレイヤーのいるマップ番号の更新
         this.px = Math.round(this.x / mapE);
         this.py = Math.round(this.y / mapE);
+
+        //send_chara_stat(this.stat);
     }
     this.changeStat = function(stat) {
         this.stat = stat;
