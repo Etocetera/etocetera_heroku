@@ -15,7 +15,7 @@ socket.on('disconnect', function() {
 
 var toucharea = $_id("toucharea");
 // タッチしたときのイベント
-toucharea.addEventListener("touchstart", touchHandler, false);
+canvas.addEventListener("touchstart", touchHandler, false);
 function touchHandler(event) {
     socket.emit('touch', room_name);
 }   
