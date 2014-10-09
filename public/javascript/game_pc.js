@@ -102,7 +102,7 @@ var map2 = map1;
 var stage = new Array(10);
 stage[0] = new Stage(map0, 2, 6, 862, 320, 1);
 stage[1] = new Stage(map1, 2, 3, 30, 128, 2);
-stage[2] = new Stage(map2, 1, 18, 0, 0, 2);
+stage[2] = new Stage(map2, 1, 13, 0, 0, 2);
 map2.showMap();
 
 /* キャンバスの準備 */
@@ -140,11 +140,14 @@ function gameLoop() {
         console.log("player.count: " + player.count);
     }
     stage[area].draw();
-    console.log("stage " + area + " was drew.");
+    //console.log("stage " + area + " was drew.");
     if (player.count == 0) {
        goal.draw();
        goal.update();
     }
+    console.log("judging...(to below map)");
+    console.log("map: ");
+    console.log(stage[area]);
     player.judge(stage[area].map);
     player.draw();
     player.update();
