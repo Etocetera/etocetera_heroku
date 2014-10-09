@@ -143,7 +143,7 @@ dog.addEventListener('touchend',function(){
     character_change(character);
 },false);*/
 monkey.addEventListener('touchend',function(){
-    character = "mouse";
+    character = "monkey";
     character_change(character);
 },false);
 mouse.addEventListener('touchend',function(){
@@ -155,15 +155,15 @@ rabbit.addEventListener('touchend',function() {
     character_change(character);
 },false);
 sheep.addEventListener('touchend',function(){
-    character = "mouse";
+    character = "sheep";
     character_change(character);
 },false);
 snake.addEventListener('touchend',function(){
-    character = "mouse";
+    character = "snake";
     character_change(character);
 },false);
 tiger.addEventListener('touchend',function(){
-    character = "mouse";
+    character = "tiger";
     character_change(character);
 },false);
 /*wildBoar.addEventListener('touchend',function(){
