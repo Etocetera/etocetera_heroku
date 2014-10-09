@@ -140,14 +140,10 @@ function gameLoop() {
         console.log("player.count: " + player.count);
     }
     stage[area].draw();
-    //console.log("stage " + area + " was drew.");
     if (player.count == 0) {
        goal.draw();
        goal.update();
     }
-    //console.log("judging...(to below map)");
-    //console.log("map: ");
-    //console.log(stage[area]);
     player.judge(stage[area].map);
     player.draw();
     player.update();

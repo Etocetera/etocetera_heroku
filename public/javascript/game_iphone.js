@@ -68,15 +68,15 @@ var character = "mouse";
 img["bird"] = $_id("birdImg");
 img["cow"] = $_id("cowImg");
 img["dog"] = $_id("dogImg");
-//img["dragon"] = $_id("dragonImg");
-//img["horse"] = $_id("horseImg");
+img["dragon"] = $_id("dragonImg");
+img["horse"] = $_id("horseImg");
 img["monkey"] = $_id("monkeyImg");
 img["mouse"] = $_id("mouseImg");
 img["rabbit"] = $_id("rabbitImg")
 img["sheep"] = $_id("sheepImg")
 img["snake"] = $_id("snakeImg");
 img["tiger"] = $_id("tigerImg");
-//wildBoar=$_id("wildBoarImg");
+wildBoar=$_id("wildBoarImg");
 mouseImg.onload = function() {
     ctx.drawImage(img[character], 0, img_height*2, img_width, img_height,
                     0, 0, canvasSizeX, canvasSizeY);
@@ -114,15 +114,15 @@ function character_change(touch_image_id) {
 var bird = $_id("bird");
 var cow = $_id("cow");
 var dog = $_id("dog");
-//var dragon = $_id("dragon");
-//var horse = $_id("horse");
+var dragon = $_id("dragon");
+var horse = $_id("horse");
 var monkey = $_id("monkey");
 var mouse = $_id("mouse");
 var rabbit = $_id("rabbit");
 var sheep = $_id("sheep");
 var snake = $_id("snake");
 var tiger = $_id("tiger");
-//var wildBoar=$_id("wildBoar");
+var wildBoar=$_id("wildBoar");
 bird.addEventListener('touchend',function(){
     character = "bird";
     character_change(character);
@@ -135,14 +135,14 @@ dog.addEventListener('touchend',function(){
     character = "dog";
     character_change(character);
 },false);
-/*mouse.addEventListener('touchend',function(){
-    character = "mouse";
+cow.addEventListener('touchend',function(){
+    character = "cow";
     character_change(character);
-},false);*/
-/*mouse.addEventListener('touchend',function(){
-    character = "mouse";
+},false);
+dragon.addEventListener('touchend',function(){
+    character = "dragon";
     character_change(character);
-},false);*/
+},false);
 monkey.addEventListener('touchend',function(){
     character = "monkey";
     character_change(character);
@@ -167,10 +167,10 @@ tiger.addEventListener('touchend',function(){
     character = "tiger";
     character_change(character);
 },false);
-/*wildBoar.addEventListener('touchend',function(){
-    character = "mouse";
+wildBoar.addEventListener('touchend',function(){
+    character = "wildBoar";
     character_change(character);
-},false);*/
+},false);
 
 
 change_style();
