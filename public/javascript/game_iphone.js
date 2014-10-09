@@ -56,7 +56,7 @@ var canvas, ctx;
 var canvasSizeX, canvasSizeY;
 var birdImg, monkeyImg, mouseImg, rabbitImg, sheepImg,
     tigreImg;
-window.onload = function() {
+
 canvas = $_id("canvas_animation");
 ctx = canvas.getContext("2d");
 canvasSizeX = canvas_animation.width;
@@ -77,7 +77,7 @@ var animationFrame = window.requestAnimationFrame ||
 var i=1;
 var j=0;
 var frame_count=0;
-function draw_animation(){
+function draw_animation() {
     animationFrame(draw_animation);
     frame_count++;
     if (touch_count % 2 == 0) {

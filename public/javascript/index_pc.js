@@ -17,7 +17,7 @@ music_6.volume = 0.2;
 music_7.volume=0.2;
 music_8.volume=0.2;
 
-function sound(id){
+function sound(id) {
     audio = document.getElementById(id);
     audio.play();
 }
