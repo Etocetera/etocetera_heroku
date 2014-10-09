@@ -133,14 +133,19 @@ function gameLoop() {
     rotate();
     if (frameCount == 0) {
         stage[area].init();
-        console.log("stage " + area + "was inited.");
+        console.log("stage " + area + " was inited.");
+        console.log("player.stat: " + player.stat);
+        console.log("player.px: " + player.px);
+        console.log("player.py: " + player.py);
+        console.log("player.count: " + player.count);
     }
     stage[area].draw();
+    console.log("stage " + area + " was drew.");
     if (player.count == 0) {
        goal.draw();
        goal.update();
     }
-    player.judge(map1);
+    player.judge(stage[area].map);
     player.draw();
     player.update();
     restoreAll();
@@ -154,6 +159,7 @@ function gameLoop() {
         if ((++eFrameCount) % 150 == 0) {
             console.log("next stage.");
             frameCount = 0;
+            eFrameCount = 0;
             area = 2;
         }
     }
