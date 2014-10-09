@@ -21,7 +21,7 @@ var frameCount = 0;
 var eFrameCount = 0;
 var textNumber = 0;
 var timer = 1800;
-var area = 2;
+var area = 1;
 /* キャンバスの傾き */
 var canvasDegree = 0;
 var dDegree = 0;
