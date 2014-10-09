@@ -9,11 +9,12 @@ socket.on('disconnect', function() {
 });
 
 var toucharea = $_id("toucharea");
-
+var touchCount = 0;
  /* タッチしたときのイベント */
 toucharea.addEventListener("touchstart", touchHandler, false);
 function touchHandler(event) {
-    socket.emit('touch', room_name);  
+    socket.emit('touch', room_name);
+    touchCount++;
 }   
 
 // 二本でタッチした時のイベント
@@ -70,19 +71,60 @@ mouseImg.onload = function() {
                     0, 0, canvasSizeX, canvasSizeY);
 }
 
-//キャラの変更
-function character_change(touch_image_id, change_image) {
-    var chara_name = $_id(touch_image_id);
-    chara_name.addEventListener('touchstart', function() {
-        ctx.clearRect(0, 0, canvasSizeX, canvasSizeY);
-        ctx.drawImage(change_image, 0, img_height*2, img_width,
-                        img_height, 0, 0, canvasSizeX, canvasSizeY);
-        socket.json.emit('chara_change', {
-            room:room_name,
-            name:touch_image_id
-        });
-    },false);
+var animationFrame = window.requestAnimationFrame ||
+                     window.webkitRequestAnimationFrame;
+                     
+var i=1;
+var j=0;
+var frame_count=0;
+function draw_animation(){
+    animationFrame(draw_animation);
+    frame_count++;
+    if (touch_count % 2 == 0) {
+        j=0;
+    }else{
+        j=1;
+    }
+    if(frame_count%10==0){
+        ctx.clearRect(0,0,canvasSizeX,canvasSizeY);
+        ctx.drawImage(img[character], img_width*(i-1), img_height*j,img_width,img_height,0,0,canvasSizeX,canvasSizeY);
+        i++;
+        if(i==9){
+            i=1;
+        }
+    }
 }
+
+    //キャラの変更
+function character_change(touch_image_id) {
+    socket.json.emit('chara_change', {
+        room:room_name,
+        name:touch_image_id
+    });
+}
+
+//var mouse=$_id("mouse");
+//var rabbit=$_id("rabbit");
+//var mouse=$_id("mouse");
+//var rabbit=$_id("rabbit");
+//var mouse=$_id("mouse");
+//var rabbit=$_id("rabbit");
+//var mouse=$_id("mouse");
+//var rabbit=$_id("rabbit");
+//var mouse=$_id("mouse");
+//var rabbit=$_id("rabbit");
+//var mouse=$_id("mouse");
+//var rabbit=$_id("rabbit");
+mouse.addEventListener('touchend',function(){
+    character="mouse";
+    character_change(character);
+},false);
+
+rabbit.addEventListener('touchend',function() {
+    character="rabbit";
+    character_change(character);
+},false);
+
 
 change_style();
 function change_style(){
@@ -93,7 +135,7 @@ function change_style(){
     $("#canvas_animation").css("left",width/2-100);
     $("#canvas_animation").css("top",height/2-100);
 }
-
+/*
 //トリ
 character_change("bird", birdImg);
 //サル
@@ -105,4 +147,4 @@ character_change("rabbit", rabbitImg);
 //ヒツジ
 character_change("sheep", sheepImg);
 //トラ
-character_change("tiger", tigerImg);
+character_change("tiger", tigerImg);*/

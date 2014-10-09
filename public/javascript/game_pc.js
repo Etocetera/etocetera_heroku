@@ -1300,7 +1300,7 @@ socket.on('touch_return', function() {
 socket.on('chara_change_return', function(data) {
     player.image = img[data];
     player.changeStat("stop");
-
+    sound("chara_change_sound");
     console.log(data);
 });
 

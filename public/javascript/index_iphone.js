@@ -27,7 +27,7 @@ function room_put_click() {
     var room_button_img = document.getElementById('room_button_img');
     wait_put.style.display = "inline";
     room_button_img.style.display = "none";
-    //sound('make_sound');
+    sound('make_sound');
 }
 
 function cancel_put() {
@@ -35,7 +35,7 @@ function cancel_put() {
     var room_button_img = document.getElementById('room_button_img');
     wait_put.style.display = "none";
     room_button_img.style.display = "inline";
-    //sound('roomDel_sound');
+    sound('roomDel_sound');
 }
 
 //サーバーに入るルーム名を送信
@@ -55,4 +55,15 @@ function roomPut() {
         alert("iphoneのsafariとPCで接続してください");
         $("#enter").val("");
     }
+}
+
+function roomDel(){
+    var room_button_img=document.getElementById('room_button_img');
+    var wait=document.getElementById('wait');
+    var room;
+    wait.style.display="none";
+    room_button_img.style.display="inline";
+    
+    socket.emit("roomDel",room_name);
+    $("#maked_room").remove();
 }

@@ -43,25 +43,14 @@ function roomPut_confirm() {
     socket.emit('roomPut_confirm', room_name);
 }
 
-function roomDel() {
-    var room_button_img = document.getElementById('room_button_img');
-    var wait = document.getElementById('wait');
-    var room;
-    wait.style.display = "none";
-    room_button_img.style.display = "inline";
-
-    socket.emit("roomDel", room_name);
-    $("#maked_room").remove();
-    sound('roomDel_sound');
-}   
-
 function load_File(id, file) {
     $.ajax({
         success : function(data) {
             $(id).load(file);
         },
         error : function() {
-            if (userAgent.indexOf('safari') != -1&&ua.indexOf('IPHONE') != -1) {
+            if (userAgent.indexOf('safari') != -1 &&
+                    ua.indexOf('IPHONE') != -1) {
                 alert('読み込めませんでした');
             } else {
                 use_dialog('#error_read', '接続に関するエラー');

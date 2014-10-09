@@ -5,6 +5,8 @@ music_3 = document.getElementById("make_sound");
 music_4 = document.getElementById("put_sound");
 music_5 = document.getElementById("roomDel_sound");
 music_6 = document.getElementById("dialog_sound");
+music_7=document.getElementById("chara_change_sound");
+music_8=document.getElementById("item_sound");
 
 music_1.volume = 0.2;
 music_2.volume = 0.2;
@@ -12,6 +14,8 @@ music_3.volume = 0.2;
 music_4.volume = 0.2;
 music_5.volume = 0.2;
 music_6.volume = 0.2;
+music_7.volume=0.2;
+music_8.volume=0.2;
 
 function sound(id){
     audio = document.getElementById(id);
@@ -26,6 +30,8 @@ function up_volume(){
         music_4.volume = music_4.volume+0.1;
         music_5.volume = music_5.volume+0.1;
         music_6.volume = music_6.volume+0.1;
+        music_7.volume=music_7.volume+0.1;
+        music_8.volume=music_8.volume+0.1;
     }
     console.log(music_1.volume);
 }
@@ -38,6 +44,8 @@ function down_volume() {
         music_4.volume = music_4.volume-0.1;
         music_5.volume = music_5.volume-0.1;
         music_6.volume = music_6.volume-0.1;
+        music_7.volume=music_7.volume-0.1;
+        music_8.volume=music_8.volume-0.1;
     } else if (music_1.volume = 0.1) {
         music_1.volume = 0;
         music_2.volume = 0;
@@ -45,6 +53,8 @@ function down_volume() {
         music_4.volume = 0;
         music_5.volume = 0;
         music_6.volume = 0;
+        music_7.volume=0;
+        music_8.volume=0;
     }
     console.log(music_1.volume);
 }
@@ -114,3 +124,18 @@ function game_put() {
 $(function() {
     $('#sub').tabs();
 });
+
+var width_window = window.screen.width;
+$("#sub").css("width",width_window-40);
+
+function roomDel(){
+    var room_button_img=document.getElementById('room_button_img');
+    var wait=document.getElementById('wait');
+    var room;
+    wait.style.display="none";
+    room_button_img.style.display="inline";
+    
+    socket.emit("roomDel",room_name);
+    $("#maked_room").remove();
+    sound('roomDel_sound');
+}
