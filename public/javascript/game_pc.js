@@ -1267,6 +1267,20 @@ function start_stop() {
     }
     console.log("start_stop event listener worked.");
 }
+function next() {
+    if (player.stat == "clear") {
+        easeToNext();
+    }
+}
+//FOアニメーション
+var easeCount = 0.1;
+function easeToNext() {
+    save(topLayer);
+    topLayer.fillStyle = "black";
+    topLayer.globalAlpha -= easeCount;
+    restore(topLayer);
+    easeCount += 0.1;
+}
 // iPhoneのイベント
 //接続が切れたときのダイアログ表示  
 socket.on('emit_disconnect', function() {
@@ -1305,7 +1319,7 @@ socket.on('touch_return', function() {
     if (releaseTouchEvent) {
         start_stop();
     } else {
-        //next();
+        next();
     }
 });
 
