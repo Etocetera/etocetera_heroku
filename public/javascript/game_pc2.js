@@ -59,7 +59,6 @@ var offsetY = 0;
 /* マップの大きさの単位 */
 var mapE = 64;
 // マップのインスタンス化
-/*
 opMap = new Map("opMap");
 opMap.init(8, 16);
 opMap.col[0] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
@@ -121,30 +120,7 @@ var stage = new Array(10);
 stage[0] = new Stage(map0, 2, 6, 862, 320, 1);
 stage[1] = new Stage(map1, 2, 3, 30, 128, 2);
 stage[2] = new Stage(map2, 2, 3, 30, 128, 2);
-map2.showMap();*/
-var map1 =
-[2,2,2, 2,2, 2,2,2,2,2, 2,2,2,2,2, 2,
- 2,0,0, 0,0, 0,0,0,0,0, 0,2,0,0,0, 2,
- 2,0,0, 0,0, 0,0,0,0,0, 0,2,0,0,0, 2,
- 2,0,0, 0,0, 0,0,0,0,0, 0,2,0,0,0, 2,
- 2,0,0, 0,2, 0,0,0,0,0, 0,2,0,0,0, 2,
- 2,0,0, 0,2, 0,0,0,0,0, 0,2,0,0,0, 2,
- 2,0,0,11,2, 0,0,0,0,0, 0,2,11,0,0, 2,
- 8,8,8, 8,8, 8,8,9,0,0, 0,8,8,9,0, 2,
- 2,0,0, 0,0, 0,0,2,0,12, 0,0,0,0,0, 2,
- 2,0,0, 0,0, 0,0,2,0,13, 0,0,0,0,0, 2,
- 2,0,0, 0,0, 0,0,2,0,0, 0,0,0,0,0, 2,
- 2,0,0, 0,0, 0,0,2,0,0, 0,0,0,0,0, 2,
- 2,0,0, 0,2, 0,0,0,0,0, 0,0,0,7,8, 2,
- 2,0,0, 0,2, 0,0,0,0,0, 0,0,0,0,0, 2,
- 2,0,0, 0,2, 0,0,0,0,0, 0,0,0,0,0, 2,
- 2,0,0, 0,2, 8,8,8,8,8, 0,0,0,0,0, 2,
- 2,0,0, 0,2, 0,0,0,0,0, 0,0,0,0,0, 2,
- 2,0,0, 0,2, 0,0,0,0,0, 0,0,0,0,0, 2,
- 2,0,0, 0,2, 11,0,0,0,0, 0,0,0,0,0, 2,
- 2,2,2, 2,2, 2,2,2,2,2, 2,2,2,2,2, 2
-]
-var stage[2] = new Stage(map1, 1, 18, 0, 0, 16, 20, 3);
+map2.showMap();
 
 /* キャンバスの準備 */
 getCanvasCtx();
@@ -264,14 +240,12 @@ function getInstance() {
 
 /* コンストラクタ */
 /* ステージコンストラクタ */
-function Stage(map, px, py, gx, gy, mx, my, count) {
+function Stage(map, px, py, gx, gy, count) {
     this.map = map;
     this.px = px;
     this.py = py;
     this.gx = gx;
     this.gy = gy;
-    this.mx = mx;
-    this.my = my;
     this.count = count;
 
     this.init = function() {
@@ -293,111 +267,109 @@ function Stage(map, px, py, gx, gy, mx, my, count) {
         var y = 0;
         var img;
         var imgX, imgY;
-        var size = this.mx * this.my;
 
-        for (var i = 0; i < size; i++) {
-            if (i != 0 && i % this.mx == 0) {
-                x = 0;
-                y += mapE;
+        for (var i = 0; i < this.map.col.length; i++) {
+            y = i * mapE;
+            for (var j = 0; j < this.map.col[i].length; j++) {
+                if (this.map.col[i][j] != 0) {
+                    x = j * mapE;
+                    switch (this.map.col[i][j]) {
+                        case 1://茶ブロック
+                            img = blocksImg;
+                            imgX = 0;
+                            imgY = 0;
+                            break;
+                        case 2://青ブロック
+                            img = blocksImg;
+                            imgX = mapE;
+                            imgY = 0;
+                            break;
+                        case 3://緑ブロック
+                            img = blocksImg;
+                            imgX = mapE * 2;
+                            imgY = 0;
+                            break;
+                        case 4://黄ブロック
+                            img = blocksImg;
+                            imgX = mapE * 3;
+                            imgY = 0;
+                            break;
+                        case 5://赤ブロック
+                            img = blocksImg;
+                            imgX = mapE * 4;
+                            imgY = 0;
+                            break;
+                        case 6://地面A
+                            img = grassFloorImg;
+                            imgX = 0;
+                            imgY = 0;
+                            break;
+                        case 7://地面B
+                            img = grassFloorImg;
+                            imgX = mapE;
+                            imgY = 0;
+                            break;
+                        case 8://地面C
+                            img = grassFloorImg;
+                            imgX = mapE * 2;
+                            imgY = 0;
+                            break;
+                        case 9://地面D
+                            img = grassFloorImg;
+                            imgX = mapE * 3;
+                            imgY = 0;
+                            break;
+                        case 10://チーズ
+                            img = cheeseImg;
+                            imgX = 0;
+                            imgY = 0;
+                            break;
+                        case 11://ニンジン
+                            img = carrotImg;
+                            imgX = 0;
+                            imgY = 0;
+                            break;
+                        case 12://ゴール上半分
+                            img = doorImg;
+                            imgX = 0;
+                            imgY = 0;
+                            break;
+                        case 13://ゴール下半分
+                            img = doorImg;
+                            imgX = 0;
+                            imgY = mapE;
+                            break;
+                        default:
+                            break;
+                    }
+                    layer2.drawImage(img, imgX, imgY, mapE, mapE,
+                            x, y, mapE, mapE);
+                }
             }
-            switch (this.map[i]) {
-                case 1://茶ブロック
-                    img = blocksImg;
-                    imgX = 0;
-                    imgY = 0;
-                    break;
-                case 2://青ブロック
-                    img = blocksImg;
-                    imgX = mapE;
-                    imgY = 0;
-                    break;
-                case 3://緑ブロック
-                    img = blocksImg;
-                    imgX = mapE * 2;
-                    imgY = 0;
-                    break;
-                case 4://黄ブロック
-                    img = blocksImg;
-                    imgX = mapE * 3;
-                    imgY = 0;
-                    break;
-                case 5://赤ブロック
-                    img = blocksImg;
-                    imgX = mapE * 4;
-                    imgY = 0;
-                    break;
-                case 6://地面A
-                    img = grassFloorImg;
-                    imgX = 0;
-                    imgY = 0;
-                    break;
-                case 7://地面B
-                    img = grassFloorImg;
-                    imgX = mapE;
-                    imgY = 0;
-                    break;
-                case 8://地面C
-                    img = grassFloorImg;
-                    imgX = mapE * 2;
-                    imgY = 0;
-                    break;
-                case 9://地面D
-                    img = grassFloorImg;
-                    imgX = mapE * 3;
-                    imgY = 0;
-                    break;
-                case 10://チーズ
-                    img = cheeseImg;
-                    imgX = 0;
-                    imgY = 0;
-                    break;
-                case 11://ニンジン
-                    img = carrotImg;
-                    imgX = 0;
-                    imgY = 0;
-                    break;
-                case 12://ゴール上半分
-                    img = doorImg;
-                    imgX = 0;
-                    imgY = 0;
-                    break;
-                case 13://ゴール下半分
-                    img = doorImg;
-                    imgX = 0;
-                    imgY = mapE;
-                    break;
-                default:
-                    break;
-            }
-            layer2.drawImage(img, imgX, imgY, mapE, mapE,
-                    x, y, mapE, mapE);
         }
-        x += mapE;
     }
 }
 /* マップコンストラクタ */
-function Map(sizeX, sizeY) {
-    this.sizeX = sizeX;
-    this.sizeY = sizeY;
+function Map(name) {
+    this.name = name;
+    this.sizeX;
+    this.sizeY;
     // マップ2次元配列の1次行配列
     this.col;
 
-    this.init = function() {
-        var size = this.sizeX * this.sizeY;
-        this.col = new Array(size);
-        for (var i = 0; i < size; i++) {
-            this.col[i] = 0;
+    this.init = function(col, row) {
+        this.col = new Array(col);
+        for (var i = 0; i < col; i++) {
+            this.col[i] = new Array(row);
+        }
+        this.sizeX = row * mapE;
+        this.sizeY = col * mapE;
+    }
+    this.showMap = function() {
+        for (var i = 0; i < this.col.length; i++) {
+            console.log(this.name + ".col[" + i + "] = " + this.col[i]);
         }
     }
-    /*
-       this.showMap = function() {
-       var size = this.sizeX * this.sizeY;
-       console.log("map = {");
-       for (var i = 0; i < size; i += this.sizeX) {
-       console.log()
-       }
-       console.log("}");
-       }*/
 }
 
 /* 干支コンストラクタ */
@@ -796,12 +768,12 @@ function Eto(image) {
 
         if (beforeStat != stat) {
             socket.json.emit('chara_stat', {
-room: room_name,
-stat: stat
-});
-beforeStat = stat;
-}
-}
+                room: room_name,
+                stat: stat
+            });
+            beforeStat = stat;
+        }
+    }
 }
 /* エフェクトコンストラクタ */
 function Effect(_image, _sizeX, _sizeY, _seen) {
@@ -1327,51 +1299,51 @@ function start_stop() {
 // iPhoneのイベント
 //接続が切れたときのダイアログ表示  
 socket.on('emit_disconnect', function() {
-        sound('dialog_sound');
-
-        $('#error_connecting').dialog({
-autoOpen: false,
-buttons:{
-"OK" : function(){
-$(this).dialog('close');
-location.reload();
-}
-},
-title: "接続に関するエラー",
-modal: true
+    sound('dialog_sound');
+    
+    $('#error_connecting').dialog({
+        autoOpen: false,
+        buttons:{
+            "OK" : function(){
+            $(this).dialog('close');
+            location.reload();
+            }
+        },
+        title: "接続に関するエラー",
+        modal: true
+    });
+    $('#error_connecting').dialog('open');
 });
-        $('#error_connecting').dialog('open');
-        });
 
 socket.on('up_vol_return', function() {
-        up_volume();
-        });
+    up_volume();
+});
 
 socket.on('down_vol_return', function() {
-        down_volume();
-        });
+    down_volume();
+});
 
 socket.on('iphone_direction_return', function(data) {
-        if (releaseTouchEvent) {
+    if (releaseTouchEvent) {
         changeDegree(-data);
-        }
-        console.log(data);
-        });
+    }
+    console.log(data);
+});
 
 socket.on('touch_return', function() {
-        if (releaseTouchEvent) {
+    if (releaseTouchEvent) {
         start_stop();
-        } else {
+    } else {
         //next();
-        }
-        });
+    }
+});
 
 socket.on('chara_change_return', function(data) {
-        player.image = img[data];
-        player.changeStat("stop");
-        sound("chara_change_sound");
-        console.log(data);
-        });
+    player.image = img[data];
+    player.changeStat("stop");
+    sound("chara_change_sound");
+    console.log(data);
+});
 
 //音の切り替え
 music_1.pause();
