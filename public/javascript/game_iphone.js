@@ -10,7 +10,7 @@ socket.on('disconnect', function() {
 
 var toucharea = $_id("toucharea");
 var touchCount = 0;
- /* タッチしたときのイベント */
+// タッチしたときのイベント
 toucharea.addEventListener("touchstart", touchHandler, false);
 function touchHandler(event) {
     socket.emit('touch', room_name);
@@ -56,7 +56,7 @@ var canvas, ctx;
 var canvasSizeX, canvasSizeY;
 var birdImg, monkeyImg, mouseImg, rabbitImg, sheepImg,
     tigreImg;
-
+window.onload = function() {
 canvas = $_id("canvas_animation");
 ctx = canvas.getContext("2d");
 canvasSizeX = canvas_animation.width;
@@ -113,8 +113,8 @@ function character_change(touch_image_id) {
 //var rabbit=$_id("rabbit");
 //var mouse=$_id("mouse");
 //var rabbit=$_id("rabbit");
-//var mouse=$_id("mouse");
-//var rabbit=$_id("rabbit");
+var mouse=$_id("mouse");
+var rabbit=$_id("rabbit");
 mouse.addEventListener('touchend',function(){
     character="mouse";
     character_change(character);
