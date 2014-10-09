@@ -177,7 +177,7 @@ function change_style(){
     $("#canvas_animation").css("left",width/2-100);
     $("#canvas_animation").css("top",height/2-100);
     $("span").css("width", width);
-    $("span").css("heigh", heigh);
+    $("span").css("height", height);
 }
 
 //キャラの状態
