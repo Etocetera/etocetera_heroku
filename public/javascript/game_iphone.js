@@ -62,10 +62,17 @@ ctx = canvas.getContext("2d");
 canvasSizeX = canvas_animation.width;
 canvasSizeY = canvas_animation.height;
 birdImg = $_id("birdImg");
+cowImg = $_id("cowImg");
+dogImg = $_id("dogImg");
+//dragonImg = $_id("dragonImg");
+//horseImg = $_id("horseImg");
 monkeyImg = $_id("monkeyImg");
 mouseImg = $_id("mouseImg");
 rabbitImg = $_id("rabbitImg")
 sheepImg = $_id("sheepImg")
+snake = $_id("snakeImg");
+tiger = $_id("tigerImg");
+//wildBoar=$_id("wildBoarImg");
 mouseImg.onload = function() {
     ctx.drawImage(mouseImg, 0, img_height*2, img_width, img_height,
                     0, 0, canvasSizeX, canvasSizeY);
