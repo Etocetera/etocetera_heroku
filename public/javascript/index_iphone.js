@@ -1,6 +1,7 @@
 //contentの非表示とgame.htmlの読み込み
 socket.on('move', function(data) {
     var content = document.getElementById('content');
+	$("body").css("background-image","url(../images/objects/blocks.png)");
     content.style.display = "none";
     load_File("#game", "game_iphone.html");
     room_name = data;
