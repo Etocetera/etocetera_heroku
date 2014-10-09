@@ -147,7 +147,7 @@ function gameLoop() {
         timerUpdate();    
     }
     if (player.stat == "clear") {
-        if ((++eFrameCount) % 150) {
+        if ((++eFrameCount) % 150 == 0) {
             console.log("next stage.");
             frameCount = 0;
             area++;
