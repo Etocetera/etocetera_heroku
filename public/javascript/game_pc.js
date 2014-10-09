@@ -18,6 +18,7 @@ var rAF = window.mozRequestAnimationFrame ||
 /* ゲーム設定 */
 var gameSpeed = 1.0;
 var frameCount = 0;
+var eFrameCount = 0;
 var textNumber = 0;
 var timer = 1800;
 var area = 1;
@@ -51,7 +52,7 @@ var blocks;
 var grassFloor;
 var goal;
 var title, textWindow, timeWindow;
-var opMap, map0, map1;
+var opMap, map0, map1, map2;
 /* マップ描画オフセット */
 var offsetX = 0;
 var offsetY = 0;
@@ -97,9 +98,32 @@ map1.col[12] = [1, 0,0,0,0,0,0,0,0,0,0,10,0,0,0,0,0,0,0,1];
 map1.col[13] = [1, 0,0,0,0,0,0,0,0,7,8, 8,8,9,0,0,0,6,0,1];
 map1.col[14] = [1, 0,0,0,0,7,8,8,8,8,8, 8,8,8,8,8,8,8,8,8];
 map1.col[15] = [8, 8,8,8,8,8,8,8,8,8,8, 8,8,8,8,8,8,8,8,8];
+map2 = new Map("map2");
+map2.init(20, 16);
+map2.col[0] =  [2,2,2, 2,2, 2,2,2,2, 2,2,2, 2,2,2,2];
+map2.col[1] =  [2,0,0, 0,0, 0,0,0,0, 0,0,2, 0,0,0,2];
+map2.col[2] =  [2,0,0, 0,0, 0,0,0,0, 0,0,2, 0,0,0,2];
+map2.col[3] =  [2,0,0, 0,2, 0,0,0,0, 0,0,2, 0,0,0,2];
+map2.col[4] =  [2,0,0, 0,2, 5,0,4,0, 4,0,2, 0,0,0,2];
+map2.col[5] =  [2,0,0,11,2, 0,0,0,0, 0,0,2, 0,0,0,2];
+map2.col[6] =  [2,8,8, 8,8, 8,8,9,0, 0,0,2, 0,0,0,2];
+map2.col[7] =  [2,0,0, 0,0, 0,0,2,0, 0,0,2,11,0,0,2];
+map2.col[8] =  [2,0,0, 0,0, 0,0,2,0,12,0,2, 8,9,0,2];
+map2.col[9] =  [2,0,0, 0,0, 0,0,2,0,13,0,0, 0,0,0,2];
+map2.col[10] = [2,0,0, 0,0, 0,0,2,0, 0,0,0, 0,0,0,2];
+map2.col[11] = [2,0,0, 0,0, 0,0,2,0, 0,0,0, 0,0,0,2];
+map2.col[12] = [2,0,0, 0,2, 0,0,0,0, 0,0,0, 0,0,0,2];
+map2.col[13] = [2,0,0, 0,2, 0,0,0,0, 0,0,0, 0,7,8,2];
+map2.col[14] = [2,0,0, 0,2, 0,0,0,0, 0,0,0, 0,0,0,2];
+map2.col[15] = [2,0,0, 0,2, 8,8,8,8, 9,0,0, 0,0,0,2];
+map2.col[16] = [2,0,0, 0,2, 0,0,0,0, 0,0,0, 0,0,0,2];
+map2.col[17] = [2,0,0, 0,2, 0,0,0,0, 0,0,0, 0,0,0,2];
+map2.col[18] = [2,0,0, 0,2,11,0,0,0, 0,0,0, 0,0,0,2];
+map2.col[19] = [2,2,2, 2,2, 2,2,2,2, 2,2,2, 2,2,2,2];
 var stage = new Array(10);
 stage[0] = new Stage(map0, 2, 6, 862, 320, 1);
 stage[1] = new Stage(map1, 2, 3, 30, 128, 2);
+stage[2] = new Stage(map2, 1, 18, 700, 600, 3);
 
 /* キャンバスの準備 */
 getCanvasCtx();
@@ -141,6 +165,13 @@ function gameLoop() {
     restoreAll();
     if (player.stat != "clear") {
         timerUpdate();    
+    }
+    if (player.stat == "clear") {
+        if ((++eFrameCount) % 150) {
+            console.log("next stage.");
+            frameCount = 0;
+        }
+        area++;
     }
     
     frameCount++;
@@ -1268,21 +1299,6 @@ function start_stop() {
     }
     console.log("start_stop event listener worked.");
 }
-function next() {
-    if (player.stat == "clear") {
-        easeToNext();
-    }
-}
-//FOアニメーション
-var easeCount = 0.1;
-function easeToNext() {
-    save(topLayer);
-    topLayer.fillStyle = "black";
-    topLayer.globalAlpha -= easeCount;
-    topLayer.fillRect(0, 0, gameScreenX, gameScreenY);
-    restore(topLayer);
-    easeCount += 0.1;
-}
 // iPhoneのイベント
 //接続が切れたときのダイアログ表示  
 socket.on('emit_disconnect', function() {
@@ -1321,7 +1337,7 @@ socket.on('touch_return', function() {
     if (releaseTouchEvent) {
         start_stop();
     } else {
-        next();
+        //next();
     }
 });
 
