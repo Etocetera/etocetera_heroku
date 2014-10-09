@@ -103,27 +103,66 @@ function character_change(touch_image_id) {
     });
 }
 
-//var mouse=$_id("mouse");
-//var rabbit=$_id("rabbit");
-//var mouse=$_id("mouse");
-//var rabbit=$_id("rabbit");
-//var mouse=$_id("mouse");
-//var rabbit=$_id("rabbit");
-//var mouse=$_id("mouse");
-//var rabbit=$_id("rabbit");
-//var mouse=$_id("mouse");
-//var rabbit=$_id("rabbit");
+var bird = $_id("bird");
+var cow = $_id("cow");
+var dog = $_id("dog");
+//var dragon = $_id("dragon");
+//var horse = $_id("horse");
+var monkey = $_id("monkey");
 var mouse = $_id("mouse");
 var rabbit = $_id("rabbit");
+var sheep = $_id("sheep");
+var snake = $_id("snake");
+var tiger = $_id("tiger");
+//var wildBoar=$_id("wildBoar");
+bird.addEventListener('touchend',function(){
+    character = "bird";
+    character_change(character);
+},false);
+cow.addEventListener('touchend',function(){
+    character = "cow";
+    character_change(character);
+},false);
+dog.addEventListener('touchend',function(){
+    character = "dog";
+    character_change(character);
+},false);
+/*mouse.addEventListener('touchend',function(){
+    character = "mouse";
+    character_change(character);
+},false);*/
+/*mouse.addEventListener('touchend',function(){
+    character = "mouse";
+    character_change(character);
+},false);*/
+monkey.addEventListener('touchend',function(){
+    character = "mouse";
+    character_change(character);
+},false);
 mouse.addEventListener('touchend',function(){
     character = "mouse";
     character_change(character);
 },false);
-
 rabbit.addEventListener('touchend',function() {
     character = "rabbit";
     character_change(character);
 },false);
+sheep.addEventListener('touchend',function(){
+    character = "mouse";
+    character_change(character);
+},false);
+snake.addEventListener('touchend',function(){
+    character = "mouse";
+    character_change(character);
+},false);
+tiger.addEventListener('touchend',function(){
+    character = "mouse";
+    character_change(character);
+},false);
+/*wildBoar.addEventListener('touchend',function(){
+    character = "mouse";
+    character_change(character);
+},false);*/
 
 
 change_style();
