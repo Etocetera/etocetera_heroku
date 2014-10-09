@@ -74,6 +74,7 @@ tiger = $_id("tigerImg");
 mouseImg.onload = function() {
     ctx.drawImage(mouseImg, 0, img_height*2, img_width, img_height,
                     0, 0, canvasSizeX, canvasSizeY);
+    draw_animation();
 }
 
 var animationFrame = window.requestAnimationFrame ||
