@@ -124,6 +124,7 @@ var stage = new Array(10);
 stage[0] = new Stage(map0, 2, 6, 862, 320, 1);
 stage[1] = new Stage(map1, 2, 3, 30, 128, 2);
 stage[2] = new Stage(map2, 1, 18, 700, 600, 3);
+map2.showMap();
 
 /* キャンバスの準備 */
 getCanvasCtx();
