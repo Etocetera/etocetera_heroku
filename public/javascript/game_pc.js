@@ -164,15 +164,15 @@ function getCanvasCtx() {
 function getImg() {
     backImg1 = $("backImg1");
     birdImg = $("birdImg");
-    //cowImg = $("cowImg");
-    //dogImg = $("dogImg");
+    cowImg = $("cowImg");
+    dogImg = $("dogImg");
     //dragonImg = $("dragonImg");
     //horseImg = $("horseImg");
     monkeyImg = $("monkeyImg");
     mouseImg = $("mouseImg");
     rabbitImg = $("rabbitImg");
     sheepImg = $("sheepImg");
-    //snakeImg = $("snakeImg");
+    snakeImg = $("snakeImg");
     tigerImg = $("tigerImg");
     //wildBoarImg = $("wildBoarImg");
     doorImg = $("doorImg");
@@ -191,15 +191,15 @@ function getImg() {
 function getInstance() {
     // 画像連想配列用意
     img["bird"] = birdImg;
-    //img[1] = {name: "cow", image: cowImg};
-    //img[2] = {name: "dog", image: dogImg};
+    img["cow"] = cowImg;
+    img["dog"] = dogImg;
     //img[3] = {name: "dragon", image: dragonImg};
     //img[4] = {name: "horse", image: horseImg};
     img["monkey"] = monkeyImg;
     img["mouse"] = mouseImg;
     img["rabbit"] = rabbitImg;
     img["sheep"] = sheepImg;
-    //img[8] = {name: "snake", image: snakeImg};
+    img["snake"] = snakeImg;
     img["tiger"] = tigerImg;
     //img[11] = {name: "wildBoar", image: wildBoarImg};
     player = new Eto(mouseImg);
@@ -718,8 +718,6 @@ function Eto(image) {
         // プレイヤーのいるマップ番号の更新
         this.px = Math.round(this.x / mapE);
         this.py = Math.round(this.y / mapE);
-
-        //send_chara_stat(this.stat);
     }
     this.changeStat = function(stat) {
         this.stat = stat;
@@ -737,6 +735,7 @@ function Eto(image) {
         } else {
             console.log("ERROR: the unexpected argument of function changeStat();");
         }
+        //send_chara_stat(this.stat);
     }
 }
 /* エフェクトコンストラクタ */
