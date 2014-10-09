@@ -203,6 +203,7 @@ function getInstance() {
     img["tiger"] = tigerImg;
     //img[11] = {name: "wildBoar", image: wildBoarImg};
     player = new Eto(mouseImg);
+    player.changeStat("clear");
     goal = new Effect(goalImg, 128, 64, 6);
     title = new System(titleImg);
     textWindow = new System(textWindowImg);
@@ -1278,6 +1279,7 @@ function easeToNext() {
     save(topLayer);
     topLayer.fillStyle = "black";
     topLayer.globalAlpha -= easeCount;
+    topLayer.fillRect(0, 0, gameScreenX, gameScreenY);
     restore(topLayer);
     easeCount += 0.1;
 }
