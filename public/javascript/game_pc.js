@@ -133,6 +133,7 @@ function gameLoop() {
     rotate();
     if (frameCount == 0) {
         stage[area].init();
+        console.log("stage " + area + "was inited.");
     }
     stage[area].draw();
     if (player.count == 0) {
@@ -150,7 +151,7 @@ function gameLoop() {
         if ((++eFrameCount) % 150 == 0) {
             console.log("next stage.");
             frameCount = 0;
-            area++;
+            area = 2;
         }
     }
     
@@ -214,7 +215,6 @@ function getInstance() {
     img["tiger"] = tigerImg;
     //img[11] = {name: "wildBoar", image: wildBoarImg};
     player = new Eto(mouseImg);
-    player.changeStat("clear");
     goal = new Effect(goalImg, 128, 64, 6);
     title = new System(titleImg);
     textWindow = new System(textWindowImg);
