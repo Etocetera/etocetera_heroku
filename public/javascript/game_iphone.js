@@ -16,7 +16,7 @@ function touchHandler(event) {
 }   
 
 // 二本でタッチした時のイベント
-toucharea.addEventListener("gesturestart", gesturestartHandler, false);
+toucharea.addEventListener("gestureend", gesturestartHandler, false);
 function gesturestartHandler(event) {
     $("span").toggleClass("option");
 }

@@ -32,7 +32,7 @@ var op = true; // オープニングムービーフラグ
 var tutorial = false; // チュートリアルフラグ
 var gameStart = false; // ゲームスタートフラグ
 var releaseTouchEvent = true; // タッチイベント解除フラグ
-var autoMove = true; // 地面に着地したときに自動的に動く
+var autoMove = false; // 地面に着地したときに自動的に動く
 /* キャラクターのサイズ */
 var charaSizeX = 64;
 var charaSizeY = 64;
