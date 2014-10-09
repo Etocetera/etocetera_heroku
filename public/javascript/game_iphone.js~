@@ -14,6 +14,7 @@ socket.on('disconnect', function() {
 });
 
 var toucharea = $_id("toucharea");
+var menu = $_id("menu");
 // タッチしたときのイベント
 canvas.addEventListener("touchstart", touchHandler, false);
 function touchHandler(event) {
@@ -21,11 +22,15 @@ function touchHandler(event) {
 }   
 
 // 二本でタッチした時のイベント
-toucharea.addEventListener("gestureend", gesturestartHandler, false);
-function gesturestartHandler(event) {
+toucharea.addEventListener("gestureend", gestureendHandler1, false);
+function gestureendHandler1(event) {
     $("span").toggleClass("option");
 }
 
+menu.addEventListener("gestureend", gestureendHandler2, false);
+function gestureendHandler2(event) {
+		$("span").toggleClass("option");
+}
 //ゲーム機能
 //音量の変化
 var up_volume = document.getElementById('up_volume');

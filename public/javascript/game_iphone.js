@@ -27,8 +27,8 @@ function gestureendHandler1(event) {
     $("span").toggleClass("option");
 }
 
-menu.addEventListener("gestureend", gestureendHandler2, false);
-function gestureendHandler2(event) {
+menu.addEventListener("gestureend", gestureendHandler, false);
+function gestureendHandler(event) {
 		$("span").toggleClass("option");
 }
 //ゲーム機能
