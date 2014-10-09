@@ -1,10 +1,11 @@
 span{
 	position:absolute;
-	left:-650px;
-	top: 220px;
+	left:-350px;
+	top: 0px;
 	transition: 2s;
     /* メニューの背景色 */
 	background-color: #FA5858;
+    z-index: 2;
 }
 
 .option{
@@ -19,7 +20,7 @@ span img{
 #canvas_animation{
 	display:block;
 	background-color: #fff;
-	z-index: -10;
+	z-index: 1;
 	position: absolute;
 	top: 0px;
 }

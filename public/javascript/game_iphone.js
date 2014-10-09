@@ -1,3 +1,8 @@
+var canvas = $_id("canvas_animation");
+var ctx = canvas.getContext("2d");
+var canvasSizeX = canvas_animation.width;
+var canvasSizeY = canvas_animation.height;
+
 //通信
 socket.on('emit_disconnect', function() {
     alert('接続が切れました');
@@ -50,17 +55,11 @@ function $_id(id) {
 //キャラのアニメーション
 var img_width = 64;
 var img_height = 64;
-var canvas, ctx;
-var canvasSizeX, canvasSizeY;
 var birdImg, cowImg, dogImg, monkeyImg, mouseImg, rabbitImg, sheepImg,
     snakeImg, tigreImg;
 var img = new Array(12);
 var character = "mouse";
 
-canvas = $_id("canvas_animation");
-ctx = canvas.getContext("2d");
-canvasSizeX = canvas_animation.width;
-canvasSizeY = canvas_animation.height;
 img["bird"] = $_id("birdImg");
 img["cow"] = $_id("cowImg");
 img["dog"] = $_id("dogImg");
@@ -104,6 +103,7 @@ function character_change(touch_image_id) {
         room:room_name,
         name:touch_image_id
     });
+    $("span").toggleClass("option");
 }
 
 var bird = $_id("bird");
@@ -176,6 +176,8 @@ function change_style(){
     $("#toucharea").css("height",height-20);
     $("#canvas_animation").css("left",width/2-100);
     $("#canvas_animation").css("top",height/2-100);
+    $("span").css("width", width);
+    $("span").css("heigh", heigh);
 }
 
 //キャラの状態
