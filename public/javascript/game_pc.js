@@ -32,7 +32,7 @@ var textFlag = true; // テキスト表示フラグ
 var op = true; // オープニングムービーフラグ
 var tutorial = false; // チュートリアルフラグ
 var gameStart = false; // ゲームスタートフラグ
-var releaseTouchEvent = true; // タッチイベント解除フラグ
+var releaseTouchEvent = false; // タッチイベント解除フラグ
 var autoMove = false; // 地面に着地したときに自動的に動く
 /* キャラクターのサイズ */
 var charaSizeX = 64;
@@ -145,9 +145,9 @@ function gameLoop() {
        goal.draw();
        goal.update();
     }
-    console.log("judging...(to below map)");
-    console.log("map: ");
-    console.log(stage[area]);
+    //console.log("judging...(to below map)");
+    //console.log("map: ");
+    //console.log(stage[area]);
     player.judge(stage[area].map);
     player.draw();
     player.update();
@@ -254,6 +254,8 @@ function Stage(map, px, py, gx, gy, count) {
         goal.x = this.gx;
         goal.y = this.gy;
         offsetX = offsetY = 0;
+
+        releaseTouchEvent = true;
     }
     this.draw = function() {
         var x = 0;
