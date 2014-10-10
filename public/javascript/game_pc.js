@@ -120,10 +120,12 @@ map2.col[16] = [ 2, 0, 0, 0, 0,  2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2];
 map2.col[17] = [ 2, 0, 0, 0, 0,  2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2];
 map2.col[18] = [ 2, 0, 0, 0, 0,  2,11, 0, 0, 0,  0, 0, 0, 0, 0,  2];
 map2.col[19] = [ 2, 2, 2, 2, 2,  2, 2, 2, 2, 2,  2, 2, 2, 2, 2,  2];
+var map3 = map2;
 var stage = new Array(10);
 stage[0] = new Stage(map0, 2, 6, 862, 320, 1);
 stage[1] = new Stage(map1, 2, 3, 30, 128, 2);
-stage[2] = new Stage(map2, 1, 18, 550, 600, 3);
+stage[2] = new Stage(map2, 1, 18, 510, 570, 3);
+stage[3] = new Stage(map3, 1, 18, 510, 570, 3);
 map2.showMap();
 
 /* キャンバスの準備 */
@@ -180,7 +182,7 @@ function gameLoop() {
             console.log("next stage.");
             frameCount = 0;
             eFrameCount = 0;
-            area = 2;
+            area++;
         }
     }
 
@@ -481,7 +483,8 @@ function Eto(image) {
                 var cx = this.px;
                 var cy = this.py;
                 current = map.col[cy][cx];
-                if (current == 10 || current == 11) {// アイテム取得
+                if ((current == 10 && this.image == mouseImg) ||
+                        (current == 11 && this.image == rabbitImg)) {//アイテム取得
                     map.col[cy][cx] = 0;
                     this.count--;
                     sound("item_sound");
@@ -565,7 +568,8 @@ function Eto(image) {
                 var cx = this.px;
                 var cy = this.py;
                 current = map.col[cy][cx];
-                if (current == 10 || current == 11) {// アイテム取得
+                if ((current == 10 && this.image == mouseImg) ||
+                        (current == 11 && this.image == rabbitImg)) {//アイテム取得
                     map.col[cy][cx] = 0;
                     this.count--;
                     sound("item_sound");
@@ -648,7 +652,8 @@ function Eto(image) {
                 var cx = this.px;
                 var cy = this.py;
                 current = map.col[cy][cx];
-                if (current == 10 || current == 11) {//アイテム取得
+                if ((current == 10 && this.image == mouseImg) ||
+                        (current == 11 && this.image == rabbitImg)) {//アイテム取得
                     map.col[cy][cx] = 0;
                     this.count--;
                     sound("item_sound");
