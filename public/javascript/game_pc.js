@@ -22,6 +22,7 @@ var eFrameCount = 0;
 var textNumber = 0;
 var timer = 1800;
 var area = 1;
+var stageMax = 3;
 /* キャンバスの傾き */
 var canvasDegree = 0;
 var dDegree = 0;
@@ -42,7 +43,7 @@ var backImg1;
 var birdImg, cowImg, dogImg, dragonImg, horseImg, monkeyImg, mouseImg,
     rabbitImg, sheepImg, snakeImg, tigerImg, wildBoarImg;
 var img = new Array(12);
-var doorImg, blocksImg, grassFloorImg, cheeseImg, carrotImg;
+var doorImg, blocksImg, grassFloorImg, cheeseImg, carrotImg, cheesePoisonImg;
 var goalImg;
 var titleImg, hiraganaImg, katakanaImg, textWindowImg, timeWindowImg;
 /* インスタンス */
@@ -82,12 +83,12 @@ map0.col[6] = [2,0,0,0,0,0,0,10,0,0,0,0,0,0,13,2];
 map0.col[7] = [8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8];
 map1 = new Map("map1");
 map1.init(16, 20);
-map1.col[0] =  [ 1, 1, 1, 1, 1,  1, 1, 1, 1, 1,  1, 1,1,1,1,1,1,1,1,1];
-map1.col[1] =  [ 1, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0,0,0,0,0,0,0,0,1];
-map1.col[2] =  [ 1,12, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0,0,0,0,0,0,0,0,1];
-map1.col[3] =  [ 1,13, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0,0,0,0,0,0,0,0,1];
-map1.col[4] =  [ 1, 5, 5, 5, 5,  5, 0, 4, 0, 4,  0, 4,0,0,0,0,0,0,0,1];
-map1.col[5] =  [ 1,10, 0, 0, 0,  0,0,0,0,0,0, 0,0,0,0,0,0,0,0,1];
+map1.col[0] =  [ 1, 1, 1, 1, 1,  1, 1, 1, 1, 1,  1, 1, 1, 1, 1,  1, 1, 1, 1, 1];
+map1.col[1] =  [ 1, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
+map1.col[2] =  [ 1,12, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
+map1.col[3] =  [ 1,13, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
+map1.col[4] =  [ 1, 5, 5, 5, 5,  5, 0, 4, 0, 4,  0, 4, 0, 0, 0,  0, 0, 0, 0, 1];
+map1.col[5] =  [ 1,10, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
 map1.col[6] =  [ 1, 0, 0, 0, 0,  0,0,0,0,0,0, 0,0,0,0,0,0,0,0,1];
 map1.col[7] =  [ 1, 8, 8, 8, 9,  0,0,0,0,0,0, 0,0,0,0,0,0,0,0,1];
 map1.col[8] =  [ 1, 0, 0, 0, 0,  0,0,0,0,0,0, 0,0,0,0,0,0,0,0,1];
@@ -121,6 +122,7 @@ map2.col[17] = [ 2, 0, 0, 0, 0,  2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2];
 map2.col[18] = [ 2, 0, 0, 0, 0,  2,11, 0, 0, 0,  0, 0, 0, 0, 0,  2];
 map2.col[19] = [ 2, 2, 2, 2, 2,  2, 2, 2, 2, 2,  2, 2, 2, 2, 2,  2];
 var map3 = map2;
+//var map3 = 
 var stage = new Array(10);
 stage[0] = new Stage(map0, 2, 6, 862, 320, 1);
 stage[1] = new Stage(map1, 2, 3, 30, 128, 2);
@@ -187,6 +189,20 @@ function gameLoop() {
             console.log("next stage.");
             frameCount = 0;
             area++;
+            if (area > gameMax) {
+                area = 1;
+            }
+        }
+    }
+    if (player.stat == "over") {
+        save(topLayer);
+        topLayer.globalAlpha = 0.5;
+        topLayer.fillStyle = "black";
+        topLayer.fillRect(0, 0, gameScreenX, gameScreenY);
+        restore(topLayer);
+        if (gameStart) {
+            console.log("retry this stage.");
+            frameCount = 0;
         }
     }
 
@@ -224,6 +240,7 @@ function getImg() {
     blocksImg = $("blocksImg");
     grassFloorImg = $("grassFloorImg");
     cheeseImg = $("cheeseImg");
+    cheesePoisonImg = $("cheesePoisonImg");
     carrotImg = $("carrotImg");
     goalImg = $("goalImg");
     titleImg = $("titleImg");
@@ -279,6 +296,7 @@ function Stage(map, px, py, gx, gy, count) {
         offsetX = offsetY = 0;
 
         releaseTouchEvent = true;
+        gameStart = false;
     }
     this.draw = function() {
         var x = 0;
@@ -356,6 +374,11 @@ function Stage(map, px, py, gx, gy, count) {
                             img = doorImg;
                             imgX = 0;
                             imgY = mapE;
+                            break;
+                        case 14://ドクチーズ
+                            img = cheesePoisonImg;
+                            imgX = 0;
+                            imgY = 0;
                             break;
                         default:
                             break;
@@ -493,6 +516,9 @@ function Eto(image) {
                     this.count--;
                     sound("item_sound");
                 }
+                if (current == 14) {//ドクチーズ取得
+                    this.changeStat("over");
+                }
                 // クリア可能判定
                 if (current == 13 && this.count == 0) {
                     if (!this.rev) {
@@ -578,6 +604,9 @@ function Eto(image) {
                     this.count--;
                     sound("item_sound");
                 }
+                if (current == 14) {//ドクチーズ取得
+                    this.changeStat("over");
+                }
                 if (current == 13 && this.count == 0) {
                     if (!this.rev) {
                         if (this.y <= cy * mapE) {
@@ -661,6 +690,9 @@ function Eto(image) {
                     map.col[cy][cx] = 0;
                     this.count--;
                     sound("item_sound");
+                }
+                if (current == 14) {//ドクチーズ取得
+                    this.changeStat("over");
                 }
                 if (current == 13 && this.count == 0) {
                     if (!this.rev) {
