@@ -164,11 +164,7 @@ function gameLoop() {
     rotate();
     if (frameCount == 0) {
         stage[area].init();
-        console.log("stage " + area + " was inited.");
-        console.log("player.stat: " + player.stat);
-        console.log("player.px: " + player.px);
-        console.log("player.py: " + player.py);
-        console.log("player.count: " + player.count);
+        console.log(stage[area]);
     }
     stage[area].draw();
     if (player.count == 0) {
