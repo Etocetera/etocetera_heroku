@@ -178,10 +178,14 @@ function gameLoop() {
     frameCount++;
 
     if (player.stat == "clear") {
-        if ((++eFrameCount) % 150 == 0) {
+        save(topLayer);
+        topLayer.globalAlpha = 0.5;
+        topLayer.fillStyle = "black";
+        topLayer.fillRect(0, 0, gameScreenX, gameScreenY);
+        restore(topLayer);
+        if (gameStart) {
             console.log("next stage.");
             frameCount = 0;
-            eFrameCount = 0;
             area++;
         }
     }
@@ -1313,6 +1317,9 @@ function start_stop() {
     }
     console.log("start_stop event listener worked.");
 }
+function next() {
+    gameStart = true;
+}
 // iPhoneのイベント
 //接続が切れたときのダイアログ表示  
 socket.on('emit_disconnect', function() {
@@ -1351,7 +1358,7 @@ socket.on('touch_return', function() {
     if (releaseTouchEvent) {
         start_stop();
     } else {
-        //next();
+        next();
     }
 });
 
