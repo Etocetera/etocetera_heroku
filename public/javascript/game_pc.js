@@ -131,7 +131,7 @@ var map3 = map2;
 //var map3 = 
 var stage = new Array(10);
 stage[0] = new Stage(map0, 2, 6, 862, 320, 1);
-stage[1] = new Stage(map1, 2, 3, 30, 128, 1);
+stage[1] = new Stage(map1, 2, 3, 30, 128, 2);
 stage[2] = new Stage(map2, 1, 18, 510, 570, 3);
 stage[3] = new Stage(map3, 1, 18, 510, 570, 3);
 map2.showMap();
