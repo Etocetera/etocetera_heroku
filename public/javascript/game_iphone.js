@@ -60,8 +60,8 @@ function $_id(id) {
 //キャラのアニメーション
 var img_width = 64;
 var img_height = 64;
-var birdImg, cowImg, dragonImg, horseImg, dogImg, monkeyImg, mouseImg, rabbitImg, sheepImg,
-    snakeImg, tigreImg, wildBoarImg;
+var birdImg, cowImg, dragonImg, horseImg, dogImg, monkeyImg, mouseImg,
+    rabbitImg, sheepImg, snakeImg, tigreImg, wildBoarImg;
 var img = new Array(12);
 var character = "mouse";
 
@@ -135,12 +135,12 @@ dog.addEventListener('touchend',function(){
     character = "dog";
     character_change(character);
 },false);
-cow.addEventListener('touchend',function(){
-    character = "cow";
-    character_change(character);
-},false);
 dragon.addEventListener('touchend',function(){
     character = "dragon";
+    character_change(character);
+},false);
+horse.addEventListener('touchend',function(){
+    character = "horse";
     character_change(character);
 },false);
 monkey.addEventListener('touchend',function(){
@@ -171,7 +171,6 @@ wildBoar.addEventListener('touchend',function(){
     character = "wildBoar";
     character_change(character);
 },false);
-
 
 change_style();
 function change_style(){
