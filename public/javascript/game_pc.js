@@ -174,7 +174,7 @@ function gameLoop() {
     player.draw();
     player.update();
     restoreAll();
-    if (player.stat != "clear" || player.stat != "over") {
+    if (player.stat != "clear" && player.stat != "over") {
         timerUpdate();    
     }
 
@@ -186,7 +186,7 @@ function gameLoop() {
         layer3.fillStyle = "black";
         layer3.fillRect(0, 0, gameScreenX, gameScreenY);
         restore(layer3);
-        topLayer.drawImage(gameclearImg, 230, 200);
+        topLayer.drawImage(gameclearImg, 240, 200);
         if (gameStart) {
             console.log("next stage.");
             frameCount = 0;
@@ -201,7 +201,7 @@ function gameLoop() {
         layer3.globalAlpha = 0.5;
         layer3.fillStyle = "black";
         layer3.fillRect(0, 0, gameScreenX, gameScreenY);
-        topLayer.drawImage(gameoverImg, 230, 200);
+        topLayer.drawImage(gameoverImg, 240, 200);
         restore(layer3);
         if (gameStart) {
             console.log("retry this stage.");
