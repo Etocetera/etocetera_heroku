@@ -517,8 +517,7 @@ function Eto(image) {
                 var cx = this.px;
                 var cy = this.py;
                 current = map.col[cy][cx];
-                if ((current == 10 && this.image == mouseImg) ||
-                        (current == 11 && this.image == rabbitImg)) {//アイテム取得
+                if (current == 10 || current == 11) {//アイテム取得
                     map.col[cy][cx] = 0;
                     this.count--;
                     sound("item_sound");
@@ -606,8 +605,7 @@ function Eto(image) {
                 var cx = this.px;
                 var cy = this.py;
                 current = map.col[cy][cx];
-                if ((current == 10 && this.image == mouseImg) ||
-                        (current == 11 && this.image == rabbitImg)) {//アイテム取得
+                if (current == 10 || current == 11) {//アイテム取得
                     map.col[cy][cx] = 0;
                     this.count--;
                     sound("item_sound");
@@ -694,8 +692,7 @@ function Eto(image) {
                 var cx = this.px;
                 var cy = this.py;
                 current = map.col[cy][cx];
-                if ((current == 10 && this.image == mouseImg) ||
-                        (current == 11 && this.image == rabbitImg)) {//アイテム取得
+                if (current == 10 || current == 11) {//アイテム取得
                     map.col[cy][cx] = 0;
                     this.count--;
                     sound("item_sound");
