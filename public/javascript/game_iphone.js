@@ -60,8 +60,8 @@ function $_id(id) {
 //キャラのアニメーション
 var img_width = 64;
 var img_height = 64;
-var birdImg, cowImg, dogImg, monkeyImg, mouseImg, rabbitImg, sheepImg,
-    snakeImg, tigreImg;
+var birdImg, cowImg, dragonImg, horseImg, dogImg, monkeyImg, mouseImg, rabbitImg, sheepImg,
+    snakeImg, tigreImg, wildBoarImg;
 var img = new Array(12);
 var character = "mouse";
 
@@ -76,7 +76,7 @@ img["rabbit"] = $_id("rabbitImg")
 img["sheep"] = $_id("sheepImg")
 img["snake"] = $_id("snakeImg");
 img["tiger"] = $_id("tigerImg");
-wildBoar=$_id("wildBoarImg");
+img["wildBoar"]=$_id("wildBoarImg");
 mouseImg.onload = function() {
     ctx.drawImage(img[character], 0, img_height*2, img_width, img_height,
                     0, 0, canvasSizeX, canvasSizeY);
