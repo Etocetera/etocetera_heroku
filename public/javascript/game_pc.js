@@ -61,7 +61,7 @@ var offsetY = 0;
 /* マップの大きさの単位 */
 var mapE = 64;
 // マップのインスタンス化
-var mapOrigin = new Array(10);
+const mapOrigin = new Array(10);
 opMap = new Map("opMap");
 opMap.init(8, 16);
 opMap.col[0] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
