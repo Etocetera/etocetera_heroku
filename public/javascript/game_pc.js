@@ -212,6 +212,7 @@ function gameLoop() {
             console.log("retry this stage.");
             frameCount = 0;
             stage[area].map = mapOrigin[area];
+            console.log(mapOrigin[area]);
         }
     }
 
