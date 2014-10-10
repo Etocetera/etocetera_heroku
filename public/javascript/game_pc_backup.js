@@ -89,46 +89,46 @@ for (var i = 0; i < map1.length; i++) {
     map1[i] = new Array(20);
 }
 map1.init(16, 20);
-map1[0] =  [ 1, 1, 1, 1, 1,  1, 1, 1, 1, 1,  1, 1, 1, 1, 1,  1, 1, 1, 1, 1];
-map1[1] =  [ 1, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
-map1[2] =  [ 1,12, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
-map1[3] =  [ 1,13, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
-map1[4] =  [ 1, 5, 5, 5, 5,  5, 0, 4, 0, 4,  0, 4, 0, 0, 0,  0, 0, 0, 0, 1];
-map1[5] =  [ 1,10, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 5];
-map1[6] =  [ 1, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 5];
-map1[7] =  [ 1, 8, 8, 8, 9,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
-map1[8] =  [ 1, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
-map1[9] =  [ 1, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
-map1[10] = [ 1, 0, 0,14, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 5];
-map1[11] = [ 1, 0, 0, 2, 2,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
-map1[12] = [ 1, 0, 0, 2, 2,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 10, 0, 0, 0, 1];
-map1[13] = [ 1, 0, 0, 0, 0,  0, 0, 0, 0, 7,  8, 8, 8, 9, 0,  0, 6, 0, 0, 1];
-map1[14] = [ 1, 0, 0, 0, 0,  7, 8, 8, 8, 8,  8, 8, 8, 8, 8,  8, 8, 8, 8, 8];
-map1[15] = [ 8, 8, 8, 8, 8,  8, 8, 8, 8, 8,  8, 8, 8, 8, 8,  8, 8, 8, 8, 8];
+map1.col[0] =  [ 1, 1, 1, 1, 1,  1, 1, 1, 1, 1,  1, 1, 1, 1, 1,  1, 1, 1, 1, 1];
+map1.col[1] =  [ 1, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
+map1.col[2] =  [ 1,12, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
+map1.col[3] =  [ 1,13, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
+map1.col[4] =  [ 1, 5, 5, 5, 5,  5, 0, 4, 0, 4,  0, 4, 0, 0, 0,  0, 0, 0, 0, 1];
+map1.col[5] =  [ 1,10, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 5];
+map1.col[6] =  [ 1, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 5];
+map1.col[7] =  [ 1, 8, 8, 8, 9,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
+map1.col[8] =  [ 1, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
+map1.col[9] =  [ 1, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
+map1.col[10] = [ 1, 0, 0,14, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 5];
+map1.col[11] = [ 1, 0, 0, 2, 2,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 1];
+map1.col[12] = [ 1, 0, 0, 2, 2,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 10, 0, 0, 0, 1];
+map1.col[13] = [ 1, 0, 0, 0, 0,  0, 0, 0, 0, 7,  8, 8, 8, 9, 0,  0, 6, 0, 0, 1];
+map1.col[14] = [ 1, 0, 0, 0, 0,  7, 8, 8, 8, 8,  8, 8, 8, 8, 8,  8, 8, 8, 8, 8];
+map1.col[15] = [ 8, 8, 8, 8, 8,  8, 8, 8, 8, 8,  8, 8, 8, 8, 8,  8, 8, 8, 8, 8];
 mapOrigin[1] = map1;
 console.log(mapOrigin[1]);
 var map2 = new Map("map2");
 map2.init(20, 16);
-map2[0] =  [ 2, 2, 2, 2, 2,  2, 2, 2, 2, 2,  2, 2, 2, 2, 2,  2];
-map2[1] =  [ 2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2, 0, 0, 0, 0,  2];
-map2[2] =  [ 2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2, 0, 0, 0, 0,  2];
-map2[3] =  [ 2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2, 0, 0, 0, 0,  2];
-map2[4] =  [ 2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2, 0, 0, 0, 0,  2];
-map2[5] =  [ 2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2, 0, 0, 0, 0,  2];
-map2[6] =  [ 2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2, 0, 0, 0, 0,  2];
-map2[7] =  [ 2,11, 0, 0, 0,  0, 0, 0, 0, 0,  2,11, 0, 0, 0,  2];
-map2[8] =  [ 2, 8, 8, 8, 8,  9, 0, 0,12, 0,  8, 8, 9, 0, 0,  2];
-map2[9] =  [ 2, 0, 0, 0, 0,  3, 0, 0,13, 0,  0, 0, 0, 0, 0,  2];
-map2[10] = [ 2, 0, 0, 0, 0,  3, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2];
-map2[11] = [ 2, 0, 0, 0, 0,  3, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2];
-map2[12] = [ 2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2];
-map2[13] = [ 2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 7, 8,  2];
-map2[14] = [ 2, 0, 0, 0, 0,  2, 8, 8, 8, 3,  0, 0, 0, 0, 0,  2];
-map2[15] = [ 2, 0, 0, 0, 0,  2, 0, 0, 0, 3,  0, 0, 0, 0, 0,  2];
-map2[16] = [ 2, 0, 0, 0, 0,  2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2];
-map2[17] = [ 2, 0, 0, 0, 0,  2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2];
-map2[18] = [ 2, 0, 0, 0, 0,  2,11, 0, 0, 0,  0, 0, 0, 0, 0,  2];
-map2[19] = [ 2, 2, 2, 2, 2,  2, 2, 2, 2, 2,  2, 2, 2, 2, 2,  2];
+map2.col[0] =  [ 2, 2, 2, 2, 2,  2, 2, 2, 2, 2,  2, 2, 2, 2, 2,  2];
+map2.col[1] =  [ 2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2, 0, 0, 0, 0,  2];
+map2.col[2] =  [ 2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2, 0, 0, 0, 0,  2];
+map2.col[3] =  [ 2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2, 0, 0, 0, 0,  2];
+map2.col[4] =  [ 2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2, 0, 0, 0, 0,  2];
+map2.col[5] =  [ 2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2, 0, 0, 0, 0,  2];
+map2.col[6] =  [ 2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2, 0, 0, 0, 0,  2];
+map2.col[7] =  [ 2,11, 0, 0, 0,  0, 0, 0, 0, 0,  2,11, 0, 0, 0,  2];
+map2.col[8] =  [ 2, 8, 8, 8, 8,  9, 0, 0,12, 0,  8, 8, 9, 0, 0,  2];
+map2.col[9] =  [ 2, 0, 0, 0, 0,  3, 0, 0,13, 0,  0, 0, 0, 0, 0,  2];
+map2.col[10] = [ 2, 0, 0, 0, 0,  3, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2];
+map2.col[11] = [ 2, 0, 0, 0, 0,  3, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2];
+map2.col[12] = [ 2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2];
+map2.col[13] = [ 2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 7, 8,  2];
+map2.col[14] = [ 2, 0, 0, 0, 0,  2, 8, 8, 8, 3,  0, 0, 0, 0, 0,  2];
+map2.col[15] = [ 2, 0, 0, 0, 0,  2, 0, 0, 0, 3,  0, 0, 0, 0, 0,  2];
+map2.col[16] = [ 2, 0, 0, 0, 0,  2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2];
+map2.col[17] = [ 2, 0, 0, 0, 0,  2, 0, 0, 0, 0,  0, 0, 0, 0, 0,  2];
+map2.col[18] = [ 2, 0, 0, 0, 0,  2,11, 0, 0, 0,  0, 0, 0, 0, 0,  2];
+map2.col[19] = [ 2, 2, 2, 2, 2,  2, 2, 2, 2, 2,  2, 2, 2, 2, 2,  2];
 mapOrigin[2] = map2;
 var map3 = map2;
 //var map3 = 
@@ -137,7 +137,7 @@ stage[0] = new Stage(map0, 2, 6, 862, 320, 1);
 stage[1] = new Stage(map1, 2, 3, 30, 128, 2);
 stage[2] = new Stage(map2, 1, 18, 510, 570, 3);
 stage[3] = new Stage(map3, 1, 18, 510, 570, 3);
-//map2.showMap();
+map2.showMap();
 
 /* キャンバスの準備 */
 getCanvasCtx();
@@ -321,12 +321,12 @@ function Stage(map, px, py, gx, gy, count) {
         var img;
         var imgX, imgY;
 
-        for (var i = 0; i < this.map.length; i++) {
+        for (var i = 0; i < this.map.col.length; i++) {
             y = i * mapE;
-            for (var j = 0; j < this.map[i].length; j++) {
-                if (this.map[i][j] != 0) {
+            for (var j = 0; j < this.map.col[i].length; j++) {
+                if (this.map.col[i][j] != 0) {
                     x = j * mapE;
-                    switch (this.map[i][j]) {
+                    switch (this.map.col[i][j]) {
                         case 1://茶ブロック
                             img = blocksImg;
                             imgX = 0;
@@ -408,14 +408,14 @@ function Stage(map, px, py, gx, gy, count) {
     }
 }
 /* マップコンストラクタ */
-/*
 function Map(name) {
     this.name = name;
     this.sizeX;
     this.sizeY;
     // マップ2次元配列の1次行配列
+    this.col;
 
-    this.init = function, row) {
+    this.init = function(col, row) {
         this.col = new Array(col);
         for (var i = 0; i < col; i++) {
             this.col[i] = new Array(row);
@@ -429,7 +429,7 @@ function Map(name) {
         }
     }
 }
-*/
+
 /* 干支コンストラクタ */
 function Eto(image) {
     // 座標系
@@ -471,10 +471,10 @@ function Eto(image) {
                 // x座標当たり判定(右->左の順)
                 rx = this.px + 1;
                 ry = this.py;
-                right = map[ry][rx];
+                right = map.col[ry][rx];
                 lx = this.px - 1;
                 ly = this.py;
-                left = map[ly][lx];
+                left = map.col[ly][lx];
                 if (right > 0 && right < 10) { // 当たり判定(右優占)
                     if (!this.rev) {
                         if (rx * mapE <= this.x + charaSizeX - 16) {
@@ -493,7 +493,7 @@ function Eto(image) {
                 // y座標落下判定
                 dx = this.px;
                 dy = this.py + 1;
-                down = map[dy][dx];
+                down = map.col[dy][dx];
                 if (down == 0 || down > 9) { // このとき落下し始めるかどうか判定
                     if (!this.rev) {
                         if (dx * mapE <= this.x + 16) {
@@ -526,9 +526,9 @@ function Eto(image) {
                 }
                 var cx = this.px;
                 var cy = this.py;
-                current = map[cy][cx];
+                current = map.col[cy][cx];
                 if (current == 10 || current == 11) {//アイテム取得
-                    map[cy][cx] = 0;
+                    map.col[cy][cx] = 0;
                     this.count--;
                     sound("item_sound");
                 }
@@ -557,10 +557,10 @@ function Eto(image) {
                 // x座標当たり判定
                 rx = this.px;
                 ry = this.py - 1;
-                right = map[ry][rx];
+                right = map.col[ry][rx];
                 lx = this.px;
                 ly = this.py + 1;
-                left = map[ly][lx];
+                left = map.col[ly][lx];
                 if (right > 0 && right < 10) { // 当たり判定(右優占)
                     if (!this.rev) {
                         if ((ry + 1) * mapE >= this.y + 16) {
@@ -579,7 +579,7 @@ function Eto(image) {
                 // y座標落下判定
                 dx = this.px + 1;
                 dy = this.py;
-                down = map[dy][dx];
+                down = map.col[dy][dx];
                 if (down == 0 || down > 9) { // このとき落下し始めるかどうか判定
                     if (!this.rev) {
                         if ((dy + 1) * mapE >=
@@ -614,9 +614,9 @@ function Eto(image) {
                 // クリア可能判定
                 var cx = this.px;
                 var cy = this.py;
-                current = map[cy][cx];
+                current = map.col[cy][cx];
                 if (current == 10 || current == 11) {//アイテム取得
-                    map[cy][cx] = 0;
+                    map.col[cy][cx] = 0;
                     this.count--;
                     sound("item_sound");
                 }
@@ -644,10 +644,10 @@ function Eto(image) {
                 // x座標当たり判定
                 rx = this.px;
                 ry = this.py + 1;
-                right = map[ry][rx];
+                right = map.col[ry][rx];
                 lx = this.px;
                 ly = this.py - 1;
-                left = map[ly][lx];
+                left = map.col[ly][lx];
                 if (right > 0 && right < 10) { // 当たり判定(右優占)
                     if (!this.rev) {
                         if (ry * mapE <= this.y + charaSizeY -16) {
@@ -666,7 +666,7 @@ function Eto(image) {
                 // y座標落下判定
                 dx = this.px - 1;
                 dy = this.py;
-                down = map[dy][dx];
+                down = map.col[dy][dx];
                 if (down == 0 || down > 9) { // このとき落下し始めるかどうか判定
                     if (!this.rev) {
                         if (dy * mapE <= this.y + 16) {
@@ -701,9 +701,9 @@ function Eto(image) {
                 // クリア可能判定
                 var cx = this.px;
                 var cy = this.py;
-                current = map[cy][cx];
+                current = map.col[cy][cx];
                 if (current == 10 || current == 11) {//アイテム取得
-                    map[cy][cx] = 0;
+                    map.col[cy][cx] = 0;
                     this.count--;
                     sound("item_sound");
                 }
