@@ -293,8 +293,9 @@ function Stage(map, px, py, gx, gy, count) {
         player.count = this.count;
         goal.x = this.gx;
         goal.y = this.gy;
-        offsetX = offsetY = 0;
 
+        offsetX = offsetY = 0;
+        canvasDegree = 0;
         releaseIphoneEvent = true;
         gameStart = false;
     }
