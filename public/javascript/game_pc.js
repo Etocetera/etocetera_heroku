@@ -45,7 +45,8 @@ var birdImg, cowImg, dogImg, dragonImg, horseImg, monkeyImg, mouseImg,
 var img = new Array(12);
 var doorImg, blocksImg, grassFloorImg, cheeseImg, carrotImg, cheesePoisonImg;
 var goalImg;
-var titleImg, hiraganaImg, katakanaImg, textWindowImg, timeWindowImg;
+var titleImg, hiraganaImg, katakanaImg, textWindowImg, timeWindowImg,
+    gameoverImg, gameclearImg;
 /* インスタンス */
 var player;
 var door;
@@ -173,18 +174,19 @@ function gameLoop() {
     player.draw();
     player.update();
     restoreAll();
-    if (player.stat != "clear") {
+    if (player.stat != "clear" || player.stat != "over") {
         timerUpdate();    
     }
 
     frameCount++;
 
     if (player.stat == "clear") {
-        save(topLayer);
-        topLayer.globalAlpha = 0.5;
-        topLayer.fillStyle = "black";
-        topLayer.fillRect(0, 0, gameScreenX, gameScreenY);
-        restore(topLayer);
+        save(layer3);
+        layer3.globalAlpha = 0.5;
+        layer3.fillStyle = "black";
+        layer3.fillRect(0, 0, gameScreenX, gameScreenY);
+        restore(layer3);
+        topLayer.drawImage(gameclearImg, 200, 200);
         if (gameStart) {
             console.log("next stage.");
             frameCount = 0;
@@ -195,11 +197,12 @@ function gameLoop() {
         }
     }
     if (player.stat == "over") {
-        save(topLayer);
-        topLayer.globalAlpha = 0.5;
-        topLayer.fillStyle = "black";
-        topLayer.fillRect(0, 0, gameScreenX, gameScreenY);
-        restore(topLayer);
+        save(layer3);
+        layer3.globalAlpha = 0.5;
+        layer3.fillStyle = "black";
+        layer3.fillRect(0, 0, gameScreenX, gameScreenY);
+        topLayer.drawImage(gameoverImg, 200, 200);
+        restore(layer3);
         if (gameStart) {
             console.log("retry this stage.");
             frameCount = 0;
@@ -248,6 +251,8 @@ function getImg() {
     hiraganaImg = $("hiraganaImg");
     katakanaImg = $("katakanaImg");
     timeWindowImg = $("timeWindowImg");
+    gameoverImg = $("gameoverImg");
+    gameclearImg = $("gameclearImg");
 }
 
 function getInstance() {
