@@ -33,7 +33,7 @@ var textFlag = true; // テキスト表示フラグ
 var op = true; // オープニングムービーフラグ
 var tutorial = false; // チュートリアルフラグ
 var gameStart = false; // ゲームスタートフラグ
-var releaseTouchEvent = false; // タッチイベント解除フラグ
+var releaseIphoneEvent = false; // タッチイベント解除フラグ
 var autoMove = false; // 地面に着地したときに自動的に動く
 /* キャラクターのサイズ */
 var charaSizeX = 64;
@@ -295,7 +295,7 @@ function Stage(map, px, py, gx, gy, count) {
         goal.y = this.gy;
         offsetX = offsetY = 0;
 
-        releaseTouchEvent = true;
+        releaseIphoneEvent = true;
         gameStart = false;
     }
     this.draw = function() {
@@ -518,6 +518,7 @@ function Eto(image) {
                 }
                 if (current == 14) {//ドクチーズ取得
                     this.changeStat("over");
+                    releaseIphoneEvent = false;
                 }
                 // クリア可能判定
                 if (current == 13 && this.count == 0) {
@@ -606,6 +607,7 @@ function Eto(image) {
                 }
                 if (current == 14) {//ドクチーズ取得
                     this.changeStat("over");
+                    releaseIphoneEvent = false;
                 }
                 if (current == 13 && this.count == 0) {
                     if (!this.rev) {
@@ -693,6 +695,7 @@ function Eto(image) {
                 }
                 if (current == 14) {//ドクチーズ取得
                     this.changeStat("over");
+                    releaseIphoneEvent = false;
                 }
                 if (current == 13 && this.count == 0) {
                     if (!this.rev) {
@@ -784,7 +787,7 @@ function Eto(image) {
                     imgNumberX = 0;
                 }
             }
-            releaseTouchEvent = false;
+            releaseIphoneEvent = false;
         } else if (this.stat == "over") {
             if (frameCount % 30 == 0) {
                 imgNumberX++;
@@ -1380,14 +1383,14 @@ socket.on('down_vol_return', function() {
 });
 
 socket.on('iphone_direction_return', function(data) {
-    if (releaseTouchEvent) {
+    if (releaseIphoneEvent) {
         changeDegree(-data);
     }
     console.log(data);
 });
 
 socket.on('touch_return', function() {
-    if (releaseTouchEvent) {
+    if (releaseIphoneEvent) {
         start_stop();
     } else {
         next();
@@ -1395,10 +1398,11 @@ socket.on('touch_return', function() {
 });
 
 socket.on('chara_change_return', function(data) {
-    player.image = img[data];
-    player.changeStat("stop");
-    sound("chara_change_sound");
-    console.log(data);
+    if (releaseIphoneEvent) {
+        player.image = img[data];
+        player.changeStat("stop");
+        sound("chara_change_sound");
+    }
 });
 
 //音の切り替え
