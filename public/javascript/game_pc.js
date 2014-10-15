@@ -30,9 +30,9 @@ var dDegree = 0;
 var g = 12;
 /* フラグ */
 var textFlag = true; // テキスト表示フラグ
-var op = false; // オープニングムービーフラグ
+var op = true; // オープニングムービーフラグ
 var tutorial = false; // チュートリアルフラグ
-var gameStart = true; // ゲームスタートフラグ
+var gameStart = false; // ゲームスタートフラグ
 var releaseIphoneEvent = false; // タッチイベント解除フラグ
 var autoMove = false; // 地面に着地したときに自動的に動く
 /* キャラクターのサイズ */
@@ -148,12 +148,12 @@ gameLoop();
 /* ゲームループ関数 */
 function gameLoop() {
     clearAll();
-//    if (op) {
+    if (op) {
         opAnimation();
-//    } else if (tutorial) {
-//        tutorialMovie();
-//    } else if (gameStart) {
-/*        drawBackground(backImg1);
+    } else if (tutorial) {
+        tutorialMovie();
+/*    } else if (gameStart) {
+        drawBackground(backImg1);
         saveAll();
         translateOffset(map0);
         rotate();
