@@ -152,12 +152,12 @@ function gameLoop() {
         opAnimation();
     } else if (tutorial) {
         tutorialMovie();
-    } else if (gameStart) {
+    } else {
         drawBackground(backImg1);
         saveAll();
         translateOffset(map0);
         rotate();
-        if (frameCount == 0) {
+        if (gameStart) {
             stage[area].init();
             console.log(stage[area]);
         }
@@ -1213,7 +1213,6 @@ function tutorialMovie() {//チュートリアル
         default:
             tutorial = false;
             gameStart = true;
-            frameCount = 0;
             break;
     }
 }
