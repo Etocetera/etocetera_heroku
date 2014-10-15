@@ -153,127 +153,128 @@ function gameLoop() {
     } else if (tutorial) {
         tutorialMovie();
     } else if (gameStart) {
-    drawBackground(backImg1);
-    saveAll();
-    translateOffset(map0);
-    rotate();
-    if (frameCount == 0) {
-        stage[area].init();
-        console.log(stage[area]);
-    }
-    stage[area].draw();
-    if (player.count == 0) {
-       goal.draw();
-       goal.update();
-    }
-    player.judge(stage[area].map);
-    player.draw();
-    player.update();
-    restoreAll();
-    if (player.stat != "clear" && player.stat != "over") {
-        timerUpdate();    
-    }
-    getTime(timer);
+        drawBackground(backImg1);
+        saveAll();
+        translateOffset(map0);
+        rotate();
+        if (frameCount == 0) {
+            stage[area].init();
+            console.log(stage[area]);
+        }
+        stage[area].draw();
+        if (player.count == 0) {
+            goal.draw();
+            goal.update();
+        }
+        player.judge(stage[area].map);
+        player.draw();
+        player.update();
+        restoreAll();
+        if (player.stat != "clear" && player.stat != "over") {
+            timerUpdate();    
+        }
+        getTime(timer);
 
-    frameCount++;
+        frameCount++;
 
-    if (player.stat == "clear") {
-        save(layer3);
-        layer3.globalAlpha = 0.5;
-        layer3.fillStyle = "black";
-        layer3.fillRect(0, 0, gameScreenX, gameScreenY);
-        restore(layer3);
-        topLayer.drawImage(gameclearImg, 260, 200);
-        if (gameStart) {
-            console.log("next stage.");
-            frameCount = 0;
-            area++;
-            if (area > stageMax) {
-                area = 1;
+        if (player.stat == "clear") {
+            save(layer3);
+            layer3.globalAlpha = 0.5;
+            layer3.fillStyle = "black";
+            layer3.fillRect(0, 0, gameScreenX, gameScreenY);
+            restore(layer3);
+            topLayer.drawImage(gameclearImg, 260, 200);
+            if (gameStart) {
+                console.log("next stage.");
+                frameCount = 0;
+                area++;
+                if (area > stageMax) {
+                    area = 1;
+                }
             }
         }
-    }
-    if (player.stat == "over") {
-        save(layer3);
-        layer3.globalAlpha = 0.5;
-        layer3.fillStyle = "black";
-        layer3.fillRect(0, 0, gameScreenX, gameScreenY);
-        topLayer.drawImage(gameoverImg, 260, 200);
-        restore(layer3);
-        if (gameStart) {
-            console.log("retry this stage.");
-            frameCount = 0;
-            stage[area].map = mapOrigin[area];
-            console.log(mapOrigin[area]);
+        if (player.stat == "over") {
+            save(layer3);
+            layer3.globalAlpha = 0.5;
+            layer3.fillStyle = "black";
+            layer3.fillRect(0, 0, gameScreenX, gameScreenY);
+            topLayer.drawImage(gameoverImg, 260, 200);
+            restore(layer3);
+            if (gameStart) {
+                console.log("retry this stage.");
+                frameCount = 0;
+                stage[area].map = mapOrigin[area];
+                console.log(mapOrigin[area]);
+            }
         }
+
+        rAF(gameLoop);
+    }
+}
+
+    function getCanvasCtx() {
+        canvas0 = $("canvas0");
+        layer0 = canvas0.getContext("2d");
+        canvas1 = $("canvas1");
+        layer1 = canvas1.getContext("2d");
+        canvas2 = $("canvas2");
+        layer2 = canvas2.getContext("2d");
+        canvas3 = $("canvas3");
+        layer3 = canvas3.getContext("2d");
+        topCanvas = $("topCanvas");
+        topLayer = topCanvas.getContext("2d");
     }
 
-    rAF(gameLoop);
-}
+    function getImg() {
+        backImg1 = $("backImg1");
+        birdImg = $("birdImg");
+        cowImg = $("cowImg");
+        dogImg = $("dogImg");
+        dragonImg = $("dragonImg");
+        horseImg = $("horseImg");
+        monkeyImg = $("monkeyImg");
+        mouseImg = $("mouseImg");
+        rabbitImg = $("rabbitImg");
+        sheepImg = $("sheepImg");
+        snakeImg = $("snakeImg");
+        tigerImg = $("tigerImg");
+        wildBoarImg = $("wildBoarImg");
+        doorImg = $("doorImg");
+        blocksImg = $("blocksImg");
+        grassFloorImg = $("grassFloorImg");
+        cheeseImg = $("cheeseImg");
+        cheesePoisonImg = $("cheesePoisonImg");
+        carrotImg = $("carrotImg");
+        goalImg = $("goalImg");
+        titleImg = $("titleImg");
+        textWindowImg = $("textWindowImg");
+        hiraganaImg = $("hiraganaImg");
+        katakanaImg = $("katakanaImg");
+        timeWindowImg = $("timeWindowImg");
+        gameoverImg = $("gameoverImg");
+        gameclearImg = $("gameclearImg");
+    }
 
-function getCanvasCtx() {
-    canvas0 = $("canvas0");
-    layer0 = canvas0.getContext("2d");
-    canvas1 = $("canvas1");
-    layer1 = canvas1.getContext("2d");
-    canvas2 = $("canvas2");
-    layer2 = canvas2.getContext("2d");
-    canvas3 = $("canvas3");
-    layer3 = canvas3.getContext("2d");
-    topCanvas = $("topCanvas");
-    topLayer = topCanvas.getContext("2d");
-}
-
-function getImg() {
-    backImg1 = $("backImg1");
-    birdImg = $("birdImg");
-    cowImg = $("cowImg");
-    dogImg = $("dogImg");
-    dragonImg = $("dragonImg");
-    horseImg = $("horseImg");
-    monkeyImg = $("monkeyImg");
-    mouseImg = $("mouseImg");
-    rabbitImg = $("rabbitImg");
-    sheepImg = $("sheepImg");
-    snakeImg = $("snakeImg");
-    tigerImg = $("tigerImg");
-    wildBoarImg = $("wildBoarImg");
-    doorImg = $("doorImg");
-    blocksImg = $("blocksImg");
-    grassFloorImg = $("grassFloorImg");
-    cheeseImg = $("cheeseImg");
-    cheesePoisonImg = $("cheesePoisonImg");
-    carrotImg = $("carrotImg");
-    goalImg = $("goalImg");
-    titleImg = $("titleImg");
-    textWindowImg = $("textWindowImg");
-    hiraganaImg = $("hiraganaImg");
-    katakanaImg = $("katakanaImg");
-    timeWindowImg = $("timeWindowImg");
-    gameoverImg = $("gameoverImg");
-    gameclearImg = $("gameclearImg");
-}
-
-function getInstance() {
-    // 画像連想配列用意
-    img["bird"] = birdImg;
-    img["cow"] = cowImg;
-    img["dog"] = dogImg;
-    img["dragon"] = dragonImg;
-    img["horse"] = horseImg;
-    img["monkey"] = monkeyImg;
-    img["mouse"] = mouseImg;
-    img["rabbit"] = rabbitImg;
-    img["sheep"] = sheepImg;
-    img["snake"] = snakeImg;
-    img["tiger"] = tigerImg;
-    img["wildBoar"] = wildBoarImg;
-    player = new Eto(mouseImg);
-    goal = new Effect(goalImg, 128, 64, 6);
-    title = new System(titleImg);
-    textWindow = new System(textWindowImg);
-    timeWindow = new System(timeWindowImg);
-}
+    function getInstance() {
+        // 画像連想配列用意
+        img["bird"] = birdImg;
+        img["cow"] = cowImg;
+        img["dog"] = dogImg;
+        img["dragon"] = dragonImg;
+        img["horse"] = horseImg;
+        img["monkey"] = monkeyImg;
+        img["mouse"] = mouseImg;
+        img["rabbit"] = rabbitImg;
+        img["sheep"] = sheepImg;
+        img["snake"] = snakeImg;
+        img["tiger"] = tigerImg;
+        img["wildBoar"] = wildBoarImg;
+        player = new Eto(mouseImg);
+        goal = new Effect(goalImg, 128, 64, 6);
+        title = new System(titleImg);
+        textWindow = new System(textWindowImg);
+        timeWindow = new System(timeWindowImg);
+    }
 
 /* コンストラクタ */
 /* ステージコンストラクタ */
