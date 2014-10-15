@@ -31,8 +31,8 @@ var g = 12;
 /* フラグ */
 var textFlag = true; // テキスト表示フラグ
 var op = false; // オープニングムービーフラグ
-var tutorial = true; // チュートリアルフラグ
-var gameStart = false; // ゲームスタートフラグ
+var tutorial = false; // チュートリアルフラグ
+var gameStart = true; // ゲームスタートフラグ
 var releaseIphoneEvent = false; // タッチイベント解除フラグ
 var autoMove = false; // 地面に着地したときに自動的に動く
 /* キャラクターのサイズ */
