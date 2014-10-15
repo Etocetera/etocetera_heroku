@@ -30,8 +30,8 @@ var dDegree = 0;
 var g = 12;
 /* フラグ */
 var textFlag = true; // テキスト表示フラグ
-var op = true; // オープニングムービーフラグ
-var tutorial = false; // チュートリアルフラグ
+var op = false; // オープニングムービーフラグ
+var tutorial = true; // チュートリアルフラグ
 var gameStart = false; // ゲームスタートフラグ
 var releaseIphoneEvent = false; // タッチイベント解除フラグ
 var autoMove = false; // 地面に着地したときに自動的に動く
@@ -926,7 +926,6 @@ function opAnimation() {
         initOpAnimation();
     }
     switch (chapter) {
-        console.log("chapter: " + chapter);
         case 0: // キャラが画面中央まで走ってくる
             if (player.x < (gameScreenX / 2) - (charaSizeX / 2)) {
                 player.x += 4;
@@ -1045,6 +1044,7 @@ function initOpAnimation() {
     title.x = gameScreenX;
     title.y = (gameScreenY / 2) - charaSizeY;
     layer1.globalAlpha = 1.0;
+    layer2.globalAlpha = 1.0;
     chapter = 0;
     i = 0;
 }
