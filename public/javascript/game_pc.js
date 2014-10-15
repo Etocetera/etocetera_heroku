@@ -1213,6 +1213,7 @@ function tutorialMovie() {//チュートリアル
         default:
             tutorial = false;
             gameStart = true;
+            frameCount = 0;
             break;
     }
 }
