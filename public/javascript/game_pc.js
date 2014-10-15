@@ -149,11 +149,11 @@ gameLoop();
 function gameLoop() {
     clearAll();
 //    if (op) {
-//        opAnimation();
+        opAnimation();
 //    } else if (tutorial) {
 //        tutorialMovie();
 //    } else if (gameStart) {
-        drawBackground(backImg1);
+/*        drawBackground(backImg1);
         saveAll();
         translateOffset(map0);
         rotate();
@@ -206,7 +206,7 @@ function gameLoop() {
                 stage[area].map = mapOrigin[area];
                 console.log(mapOrigin[area]);
             }
-        }
+        }*/
 
         rAF(gameLoop);
 }
