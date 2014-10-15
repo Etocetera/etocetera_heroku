@@ -150,7 +150,7 @@ function gameLoop() {
     clearAll();
     if (op) {
         opAnimation();
-        console.log("animation start");
+        console.log("chapter : " + chapter);
     } else if (tutorial) {
         tutorialMovie();
     } else if (gameStart) {
