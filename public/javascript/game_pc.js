@@ -152,7 +152,7 @@ function gameLoop() {
         opAnimation();
     } else if (tutorial) {
         tutorialMovie();
-/*    } else if (gameStart) {
+    } /*else if (gameStart) {
         drawBackground(backImg1);
         saveAll();
         translateOffset(map0);
