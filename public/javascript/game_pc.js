@@ -185,6 +185,7 @@ function gameLoop() {
             if (gameStart) {
                 frameCount = 0;
                 area++;
+                console.log("area: " + area);
                 if (area > stageMax) {
                     area = 1;
                 }
