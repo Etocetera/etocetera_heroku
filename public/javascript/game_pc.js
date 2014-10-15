@@ -148,11 +148,11 @@ gameLoop();
 /* ゲームループ関数 */
 function gameLoop() {
     clearAll();
-    if (op) {
-        opAnimation();
-    } else if (tutorial) {
-        tutorialMovie();
-    } else if (gameStart) {
+//    if (op) {
+//        opAnimation();
+//    } else if (tutorial) {
+//        tutorialMovie();
+//    } else if (gameStart) {
         drawBackground(backImg1);
         saveAll();
         translateOffset(map0);
@@ -209,8 +209,8 @@ function gameLoop() {
         }
 
         rAF(gameLoop);
-    }
 }
+//}
 
 function getCanvasCtx() {
     canvas0 = $("canvas0");
