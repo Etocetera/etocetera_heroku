@@ -1211,7 +1211,7 @@ function tutorialMovie() {//チュートリアル
             }
             break;
         default:
-            console.log("gameStart is true.");
+            tutorial = false;
             gameStart = true;
             break;
     }
