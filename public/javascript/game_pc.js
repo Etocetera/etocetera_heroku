@@ -22,7 +22,7 @@ var eFrameCount = 0;
 var textNumber = 0;
 var timer = 1800;
 var area = 1;
-var stageMax = 3;
+var stageMax = 2;
 /* キャンバスの傾き */
 var canvasDegree = 0;
 var dDegree = 0;
@@ -148,16 +148,11 @@ gameLoop();
 /* ゲームループ関数 */
 function gameLoop() {
     clearAll();
-    /*
     if (op) {
         opAnimation();
     } else if (tutorial) {
         tutorialMovie();
     } else if (gameStart) {
-        console.log("game started.");
-        stage[area].init();
-        stage[area].draw();
-    }*/
     drawBackground(backImg1);
     saveAll();
     translateOffset(map0);
@@ -1031,6 +1026,11 @@ function opAnimation() {
             title.draw();
             player.draw();
             player.update();
+            i++;
+            if (i > 300) {
+                op = false;
+                tutorial = true;
+            }
             break;
     }
 }
@@ -1045,12 +1045,6 @@ function initOpAnimation() {
     layer1.globalAlpha = 1.0;
     chapter = 0;
     i = 0;
-}
-function goToTutorial() {
-    clearAll();
-    op = false;
-    tutorial = true;
-    frameCount = 0;
 }
 
 function tutorialMovie() {//チュートリアル
