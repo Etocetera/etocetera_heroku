@@ -152,7 +152,7 @@ function gameLoop() {
         opAnimation();
     } else if (tutorial) {
         tutorialMovie();
-    } /*else if (gameStart) {
+    } else if (gameStart) {
         drawBackground(backImg1);
         saveAll();
         translateOffset(map0);
@@ -184,7 +184,6 @@ function gameLoop() {
             restore(layer3);
             topLayer.drawImage(gameclearImg, 260, 200);
             if (gameStart) {
-                console.log("next stage.");
                 frameCount = 0;
                 area++;
                 if (area > stageMax) {
@@ -200,12 +199,11 @@ function gameLoop() {
             topLayer.drawImage(gameoverImg, 260, 200);
             restore(layer3);
             if (gameStart) {
-                console.log("retry this stage.");
                 frameCount = 0;
                 stage[area].map = mapOrigin[area];
                 console.log(mapOrigin[area]);
             }
-        }*/
+        }
 
         frameCount++;
         rAF(gameLoop);
