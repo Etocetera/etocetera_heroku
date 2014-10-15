@@ -1356,9 +1356,7 @@ function start_stop() {
     console.log("start_stop event listener worked.");
 }
 function next() {
-    if (textNumber > 11) {
-        gameStart = true;
-    }
+    gameStart = true;
 }
 // iPhoneのイベント
 //接続が切れたときのダイアログ表示  
