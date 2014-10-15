@@ -175,7 +175,6 @@ function gameLoop() {
         }
         getTime(timer);
 
-
         if (player.stat == "clear") {
             save(layer3);
             layer3.globalAlpha = 0.5;
@@ -204,11 +203,11 @@ function gameLoop() {
                 console.log(mapOrigin[area]);
             }
         }
+    }
 
-        frameCount++;
-        rAF(gameLoop);
+    frameCount++;
+    rAF(gameLoop);
 }
-//}
 
 function getCanvasCtx() {
     canvas0 = $("canvas0");
