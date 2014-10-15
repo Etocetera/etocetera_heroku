@@ -1054,6 +1054,7 @@ function tutorialMovie() {//チュートリアル
 
     if (frameCount == 0) {
         initTutorial();
+        stage[0].init();
     }
 
     switch (textNumber) {
