@@ -1046,6 +1046,8 @@ function initOpAnimation() {
     title.y = (gameScreenY / 2) - charaSizeY;
     layer1.globalAlpha = 1.0;
     layer2.globalAlpha = 1.0;
+    layer3.globalAlpha = 1.0;
+    topLayer.globalAlpha = 1.0;
     chapter = 0;
     i = 0;
 }
@@ -1063,7 +1065,7 @@ function tutorialMovie() {//チュートリアル
             drawPlayer();
             textWindow.draw();
             drawText("ゲームのあそびかたをせつめいするよ！1");
-            if (frameCount > 100) {
+            if (frameCount > 200) {
                 textNumber++;
                 player.changeStat("move");
             }
@@ -1084,7 +1086,7 @@ function tutorialMovie() {//チュートリアル
             drawPlayer();
             textWindow.draw();
             drawText("もういちどタップをするととまるんだ！3");
-            if (frameCount > 100) {
+            if (frameCount > 200) {
                 frameCount = 0;
                 textNumber++;
             }
@@ -1096,7 +1098,7 @@ function tutorialMovie() {//チュートリアル
             drawText("これがたべものだよ！3");
             topLayer.strokeStyle = "red";
             topLayer.strokeRect(448, 384, 64, 64);
-            if (frameCount > 100) {
+            if (frameCount > 200) {
                 frameCount = 0;
                 textNumber++;
             }
@@ -1107,7 +1109,7 @@ function tutorialMovie() {//チュートリアル
             textWindow.draw();
             drawText("これがゴールだよ！4");
             topLayer.strokeRect(896, 320, 64, 128);
-            if (frameCount > 100) {
+            if (frameCount > 200) {
                 frameCount = 0;
                 textNumber++;
             }
@@ -1117,7 +1119,7 @@ function tutorialMovie() {//チュートリアル
             drawPlayer();
             textWindow.draw();
             drawText("たべものをぜんぶあつめないとゴールできないからちゅういしてね！5");
-            if (frameCount > 100) {
+            if (frameCount > 200) {
                 frameCount = 0;
                 textNumber++;
             }
@@ -1129,7 +1131,7 @@ function tutorialMovie() {//チュートリアル
             drawText("ゴールできるようになるとこのもじがでるよ！6");
             topLayer.strokeRect(862, 320, 128, 64);
             goal.draw();
-            if (frameCount > 100) {
+            if (frameCount > 200) {
                 frameCount = 0;
                 textNumber++;
             }
@@ -1139,7 +1141,7 @@ function tutorialMovie() {//チュートリアル
             drawPlayer();
             textWindow.draw();
             drawText("アイフォンをかたむけると...！7");
-            if (frameCount > 100) {
+            if (frameCount > 200) {
                 frameCount = 0;
                 textNumber++;
                 dDegree = -90;
@@ -1154,7 +1156,7 @@ function tutorialMovie() {//チュートリアル
             stage[0].draw();
             drawPlayer();
             restoreAll();
-            if (frameCount > 100) {
+            if (frameCount > 200) {
                 frameCount = 0;
                 textNumber++;
                 dDegree = 0;
@@ -1169,7 +1171,7 @@ function tutorialMovie() {//チュートリアル
             restoreAll();
             textWindow.draw();
             drawText("いけそうにないゴールがあっても9");
-            if (frameCount > 100) {
+            if (frameCount > 200) {
                 frameCount = 0;
                 textNumber++;
                 player.changeStat("move");
@@ -1189,7 +1191,7 @@ function tutorialMovie() {//チュートリアル
             restoreAll();
             textWindow.draw();
             drawText("かいてんしたらいけるようになるかも！10");
-            if (frameCount > 100) {
+            if (frameCount > 200) {
                 frameCount = 0;
                 textNumber++;
             }
