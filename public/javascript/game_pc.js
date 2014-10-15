@@ -175,7 +175,6 @@ function gameLoop() {
         }
         getTime(timer);
 
-        frameCount++;
 
         if (player.stat == "clear") {
             save(layer3);
@@ -208,6 +207,7 @@ function gameLoop() {
             }
         }*/
 
+        frameCount++;
         rAF(gameLoop);
 }
 //}
@@ -1031,6 +1031,7 @@ function opAnimation() {
             if (i > 300) {
                 op = false;
                 tutorial = true;
+                frameCount = 0;
             }
             break;
     }
@@ -1356,7 +1357,9 @@ function start_stop() {
     console.log("start_stop event listener worked.");
 }
 function next() {
-    gameStart = true;
+    if (textNumber > 11) {
+        gameStart = true;
+    }
 }
 // iPhoneのイベント
 //接続が切れたときのダイアログ表示  
