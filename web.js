@@ -1,7 +1,6 @@
 /*
  * Node Sever Script 
  */
-
 var express = require('express')
   , http = require('http')
   , path = require('path')
@@ -11,29 +10,27 @@ var express = require('express')
 var roomList = new Object();
 var room_name;
 var iphone_count=new Object();
-var io=require('socket.io').listen(server);
+var io = require('socket.io').listen(server);
 var port = process.env.PORT || 4000;
 server.listen(port);
-app.configure(function(){
+app.configure(function() {
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
-app.configure('development', function(){
+app.configure('development', function() {
   app.use(express.errorHandler());
 });
-
  
-io.sockets.on("connection", function (socket) {
-
-    socket.on("roomMake_iphone",function roomMake(){
-        room_name=Math.floor(Math.random()*10000);
+io.sockets.on("connection", function(socket) {
+    socket.on("roomMake_iphone", function roomMake() {
+        room_name = Math.floor(Math.random()*10000);
         if(!roomList[room_name]){
             //ルームが作られていない場合
             roomList[room_name] = 1;
             socket.set('room', room_name);
             socket.join(room_name);
             io.sockets.to(room_name).emit('roomList', room_name);
-            iphone_count[room_name]=1;
+            iphone_count[room_name] = 1;
            
         }else{
             roomMake();
@@ -41,22 +38,22 @@ io.sockets.on("connection", function (socket) {
     });
 
     socket.on("roomMake_pc",function roomMake(){
-        room_name=Math.floor(Math.random()*10000);
+        room_name = Math.floor(Math.random()*10000);
         if(!roomList[room_name]){
             //ルームが作られていない場合
             roomList[room_name] = 1;
             socket.set('room', room_name);
             socket.join(room_name);
             io.sockets.to(room_name).emit('roomList', room_name);
-            iphone_count[room_name]=0;
+            iphone_count[room_name] = 0;
         }else{
             roomMake();
         }
     });
 
     socket.on('roomPut_confirm',function(room_num){
-        var num_iphone=iphone_count[room_num];
-        var num_client=roomList[room_num];
+        var num_iphone = iphone_count[room_num];
+        var num_client = roomList[room_num];
         socket.json.emit('confirm_return',{
             iphone: num_iphone,
             client: num_client
@@ -81,7 +78,6 @@ io.sockets.on("connection", function (socket) {
             }
     });
     
- 
     socket.on("disconnect", function () {
         var room;
         socket.get('room', function(err, _room){

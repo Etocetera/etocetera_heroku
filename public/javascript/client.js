@@ -1,4 +1,3 @@
-//var socket = io.connect('http://salty-depths-4413.herokuapp.com/');
 var socket = io.connect('http://etocetera.herokuapp.com/');
 
 function send() {
