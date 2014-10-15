@@ -150,7 +150,6 @@ function gameLoop() {
     clearAll();
     if (op) {
         opAnimation();
-        console.log("chapter : " + chapter);
     } else if (tutorial) {
         tutorialMovie();
     } else if (gameStart) {
@@ -213,69 +212,69 @@ function gameLoop() {
     }
 }
 
-    function getCanvasCtx() {
-        canvas0 = $("canvas0");
-        layer0 = canvas0.getContext("2d");
-        canvas1 = $("canvas1");
-        layer1 = canvas1.getContext("2d");
-        canvas2 = $("canvas2");
-        layer2 = canvas2.getContext("2d");
-        canvas3 = $("canvas3");
-        layer3 = canvas3.getContext("2d");
-        topCanvas = $("topCanvas");
-        topLayer = topCanvas.getContext("2d");
-    }
+function getCanvasCtx() {
+    canvas0 = $("canvas0");
+    layer0 = canvas0.getContext("2d");
+    canvas1 = $("canvas1");
+    layer1 = canvas1.getContext("2d");
+    canvas2 = $("canvas2");
+    layer2 = canvas2.getContext("2d");
+    canvas3 = $("canvas3");
+    layer3 = canvas3.getContext("2d");
+    topCanvas = $("topCanvas");
+    topLayer = topCanvas.getContext("2d");
+}
 
-    function getImg() {
-        backImg1 = $("backImg1");
-        birdImg = $("birdImg");
-        cowImg = $("cowImg");
-        dogImg = $("dogImg");
-        dragonImg = $("dragonImg");
-        horseImg = $("horseImg");
-        monkeyImg = $("monkeyImg");
-        mouseImg = $("mouseImg");
-        rabbitImg = $("rabbitImg");
-        sheepImg = $("sheepImg");
-        snakeImg = $("snakeImg");
-        tigerImg = $("tigerImg");
-        wildBoarImg = $("wildBoarImg");
-        doorImg = $("doorImg");
-        blocksImg = $("blocksImg");
-        grassFloorImg = $("grassFloorImg");
-        cheeseImg = $("cheeseImg");
-        cheesePoisonImg = $("cheesePoisonImg");
-        carrotImg = $("carrotImg");
-        goalImg = $("goalImg");
-        titleImg = $("titleImg");
-        textWindowImg = $("textWindowImg");
-        hiraganaImg = $("hiraganaImg");
-        katakanaImg = $("katakanaImg");
-        timeWindowImg = $("timeWindowImg");
-        gameoverImg = $("gameoverImg");
-        gameclearImg = $("gameclearImg");
-    }
+function getImg() {
+    backImg1 = $("backImg1");
+    birdImg = $("birdImg");
+    cowImg = $("cowImg");
+    dogImg = $("dogImg");
+    dragonImg = $("dragonImg");
+    horseImg = $("horseImg");
+    monkeyImg = $("monkeyImg");
+    mouseImg = $("mouseImg");
+    rabbitImg = $("rabbitImg");
+    sheepImg = $("sheepImg");
+    snakeImg = $("snakeImg");
+    tigerImg = $("tigerImg");
+    wildBoarImg = $("wildBoarImg");
+    doorImg = $("doorImg");
+    blocksImg = $("blocksImg");
+    grassFloorImg = $("grassFloorImg");
+    cheeseImg = $("cheeseImg");
+    cheesePoisonImg = $("cheesePoisonImg");
+    carrotImg = $("carrotImg");
+    goalImg = $("goalImg");
+    titleImg = $("titleImg");
+    textWindowImg = $("textWindowImg");
+    hiraganaImg = $("hiraganaImg");
+    katakanaImg = $("katakanaImg");
+    timeWindowImg = $("timeWindowImg");
+    gameoverImg = $("gameoverImg");
+    gameclearImg = $("gameclearImg");
+}
 
-    function getInstance() {
-        // 画像連想配列用意
-        img["bird"] = birdImg;
-        img["cow"] = cowImg;
-        img["dog"] = dogImg;
-        img["dragon"] = dragonImg;
-        img["horse"] = horseImg;
-        img["monkey"] = monkeyImg;
-        img["mouse"] = mouseImg;
-        img["rabbit"] = rabbitImg;
-        img["sheep"] = sheepImg;
-        img["snake"] = snakeImg;
-        img["tiger"] = tigerImg;
-        img["wildBoar"] = wildBoarImg;
-        player = new Eto(mouseImg);
-        goal = new Effect(goalImg, 128, 64, 6);
-        title = new System(titleImg);
-        textWindow = new System(textWindowImg);
-        timeWindow = new System(timeWindowImg);
-    }
+function getInstance() {
+    // 画像連想配列用意
+    img["bird"] = birdImg;
+    img["cow"] = cowImg;
+    img["dog"] = dogImg;
+    img["dragon"] = dragonImg;
+    img["horse"] = horseImg;
+    img["monkey"] = monkeyImg;
+    img["mouse"] = mouseImg;
+    img["rabbit"] = rabbitImg;
+    img["sheep"] = sheepImg;
+    img["snake"] = snakeImg;
+    img["tiger"] = tigerImg;
+    img["wildBoar"] = wildBoarImg;
+    player = new Eto(mouseImg);
+    goal = new Effect(goalImg, 128, 64, 6);
+    title = new System(titleImg);
+    textWindow = new System(textWindowImg);
+    timeWindow = new System(timeWindowImg);
+}
 
 /* コンストラクタ */
 /* ステージコンストラクタ */
@@ -927,6 +926,7 @@ function opAnimation() {
         initOpAnimation();
     }
     switch (chapter) {
+        console.log("chapter: " + chapter);
         case 0: // キャラが画面中央まで走ってくる
             if (player.x < (gameScreenX / 2) - (charaSizeX / 2)) {
                 player.x += 4;
