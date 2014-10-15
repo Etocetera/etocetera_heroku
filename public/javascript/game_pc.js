@@ -21,7 +21,7 @@ var frameCount = 0;
 var eFrameCount = 0;
 var textNumber = 0;
 var timer = 1800;
-var area = 1;
+var area = 0;
 var stageMax = 2;
 /* キャンバスの傾き */
 var canvasDegree = 0;
@@ -158,6 +158,10 @@ function gameLoop() {
         translateOffset(map0);
         rotate();
         if (gameStart) {
+            area++;
+            if (area > stageMax) {
+                area = 1;
+            }
             stage[area].init();
             console.log(stage[area]);
         }
@@ -184,11 +188,6 @@ function gameLoop() {
             topLayer.drawImage(gameclearImg, 260, 200);
             if (gameStart) {
                 frameCount = 0;
-                area++;
-                console.log("area: " + area);
-                if (area > stageMax) {
-                    area = 1;
-                }
             }
         }
         if (player.stat == "over") {
